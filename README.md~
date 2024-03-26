@@ -1,1 +1,13 @@
-# SentimentAnalysis
+# SentimentAnalysis from https://www.airlinequality.com/
+Motivation:
+The rationale behind scraping data from the airline reviews webpage is to construct a comprehensive dataset encompassing customer reviews, ratings, and pertinent details. This dataset serves multiple objectives, including:
+
+Sentiment Analysis: Analyzing customer sentiments towards airlines through a comprehensive examination of their reviews and ratings.
+
+Performance Evaluation: Assessing airlines' performance by analyzing customer feedback regarding aspects such as service quality, punctuality, and customer service.
+
+Comparative Analysis: Conducting comparative assessments of airlines' performances by comparing their respective datasets.
+
+Predictive Modeling: Developing machine learning models capable of predicting customer satisfaction or flight experiences based on review data.
+
+Business Insights: Extracting actionable insights for airlines to improve their services, identify areas of enhancement, and enhance overall customer satisfaction.
