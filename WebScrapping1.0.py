@@ -10,6 +10,8 @@ import pandas as pd
 import time
 import traceback
 import math
+import io
+import dropbox
 
 
 # In[ ]:
@@ -175,8 +177,17 @@ for name in lst_names:
     get_airline_data(name)
     
 # Convert the list of dictionaries into a DataFrame
-comments_data = pd.DataFrame(comments_data_list)
-comments_data.to_csv('all_reviews.csv', encoding='utf-8', index=False)
+# comments_data = pd.DataFrame(comments_data_list)
+# comments_data.to_csv('all_reviews.csv', encoding='utf-8', index=False)
+
+df = pd.DataFrame(comments_data_list)
+token = 'sl.BzXB9urCsruMYyUF_MA2JEcLsx2uazo71QLxpc76qBde_X1-i8WlA18FC9LTZn-9RSOEsttjegW40s7ugBPobue_rEH6IKp_P74sGCTgHwCyU9uygOXjNjJAa0udWg7NxXBu4aBooMGq39mxIwmv5E0'
+DBX = dropbox.Dropbox(token)
+
+data = df.to_csv(index=False) 
+with io.BytesIO(data.encode()) as stream:
+    stream.seek(0)
+    DBX.files_upload(stream.read(), "/all_reviews.csv", mode=dropbox.files.WriteMode.overwrite)
 
 
 # In[ ]:
