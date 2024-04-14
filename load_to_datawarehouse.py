@@ -68,7 +68,7 @@ db_datawarehouse.close()
 engine = create_engine(f'mysql://{user}:{passwd}@{host}:{port}/{database}?charset=utf8mb4', echo=False,future=True)
 db_sent = engine.connect()
 
-token = 'sl.BzXB9urCsruMYyUF_MA2JEcLsx2uazo71QLxpc76qBde_X1-i8WlA18FC9LTZn-9RSOEsttjegW40s7ugBPobue_rEH6IKp_P74sGCTgHwCyU9uygOXjNjJAa0udWg7NxXBu4aBooMGq39mxIwmv5E0'
+token = ''
 DBX = dropbox.Dropbox(token)
 _, res = DBX.files_download("/all_reviews.csv")
 

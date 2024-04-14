@@ -181,7 +181,7 @@ for name in lst_names:
 # comments_data.to_csv('all_reviews.csv', encoding='utf-8', index=False)
 
 df = pd.DataFrame(comments_data_list)
-token = 'sl.BzXB9urCsruMYyUF_MA2JEcLsx2uazo71QLxpc76qBde_X1-i8WlA18FC9LTZn-9RSOEsttjegW40s7ugBPobue_rEH6IKp_P74sGCTgHwCyU9uygOXjNjJAa0udWg7NxXBu4aBooMGq39mxIwmv5E0'
+token = ''
 DBX = dropbox.Dropbox(token)
 
 data = df.to_csv(index=False) 
