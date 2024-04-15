@@ -12,6 +12,8 @@ import traceback
 import math
 import io
 import dropbox
+import os
+from dotenv import load_dotenv
 
 
 # In[ ]:
@@ -181,14 +183,14 @@ for name in lst_names:
 # comments_data.to_csv('all_reviews.csv', encoding='utf-8', index=False)
 
 df = pd.DataFrame(comments_data_list)
-token = ''
+load_dotenv()
+token=os.getenv('DROPBOX_TOKEN')
 DBX = dropbox.Dropbox(token)
 
 data = df.to_csv(index=False) 
 with io.BytesIO(data.encode()) as stream:
     stream.seek(0)
     DBX.files_upload(stream.read(), "/all_reviews.csv", mode=dropbox.files.WriteMode.overwrite)
-
 
 # In[ ]:
 

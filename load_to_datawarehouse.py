@@ -6,6 +6,8 @@ import io
 import dropbox
 from datetime import datetime
 from sqlalchemy.types import VARCHAR
+import os
+from dotenv import load_dotenv
 
 
 host = '34.87.87.119'
@@ -68,7 +70,8 @@ db_datawarehouse.close()
 engine = create_engine(f'mysql://{user}:{passwd}@{host}:{port}/{database}?charset=utf8mb4', echo=False,future=True)
 db_sent = engine.connect()
 
-token = ''
+load_dotenv()
+token=os.getenv('DROPBOX_TOKEN')
 DBX = dropbox.Dropbox(token)
 _, res = DBX.files_download("/all_reviews.csv")
 
