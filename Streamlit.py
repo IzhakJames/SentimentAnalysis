@@ -1,21 +1,19 @@
 import streamlit as st
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+
+# EDA
 import mysql.connector
 from sqlalchemy import create_engine
 from mysql.connector import Error
-
-import nltk 
-from nltk.corpus import stopwords 
-import string
 import collections
-
 import seaborn as sns
 from wordcloud import WordCloud 
 
-import re
-import spacy
+# ML
+from sklearn.metrics import confusion_matrix, accuracy_score, classification_report, ConfusionMatrixDisplay
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
@@ -89,6 +87,14 @@ def create_corpus(column,df):
     
     return corpus
 
+def airline_wordcloud(airline):
+    all_words = ' '.join(create_corpus("review_cleaned", reviews_fact[reviews_fact["Airline"] == airline]))
+    wordcloud = WordCloud(max_font_size=50, background_color='white').generate(all_words)
+    plt.figure(figsize=(15,5))
+    plt.imshow(wordcloud, interpolation='bilinear')
+    plt.title(f"Cleaned {airline} reviews wordcloud")
+    st.pyplot()
+
 # Start of frontend
 st.title('Analysis on Airline Reviews')
 
@@ -110,14 +116,17 @@ Predictive Modeling: Developing machine learning models capable of predicting cu
 
 Business Insights: Extracting actionable insights for airlines to improve their services, identify areas of enhancement, and enhance overall customer satisfaction.''')
 elif nav_option == "EDA":
-    st.write("Data")
+    st.subheader("Data")
+    st.write("Reviews Fact")
     reviews_fact = get_dataframe("reviews_fact")
     st.dataframe(reviews_fact) 
+    
+    st.write("Airline Dimension")
     airline_dimension = get_dataframe("airline_dimension")
     st.dataframe(airline_dimension)
 
     # Univariate Analysis
-    st.write("Univariate Analysis")
+    st.subheader("Univariate Analysis")
 
     # Compare Airline with Overall Rating
     plt.bar(airline_dimension["Airline"], airline_dimension["Overall Rating"])
@@ -148,100 +157,6 @@ elif nav_option == "EDA":
     #Destination
     single_column_analysis(reviews_fact, "Destination", "Destination Country", 1, 1)
 
-    #Reviews
-    review_len = reviews_fact['Review'].str.len()
-    plt.figure(figsize=(16,8))
-    plt.hist(review_len)
-    plt.title('Number of Characters in Reviews')
-    st.pyplot()
-
-    #Analyse reviews
-    STOPWORDS = stopwords.words('english')
-    STOPWORDS.extend(["would", "get", "-", "us", "also", "one", "said", "even", "told", "take", "try", "go", "give", "use", "flight", "airline"])
-    STOPWORDS.extend(["cebu","indigo","scoot","airasia","jetstar","lion","zipair","pacific"])
-
-    #Top 20 most common stopwords
-    corpus = create_corpus("Review", reviews_fact)
-    dic = collections.defaultdict(int)
-    for word in corpus:
-        if word in STOPWORDS:
-            dic[word] += 1
-    x, y = zip(*sorted(dic.items(), key=lambda word: word[1], reverse=True)[:20])
-    plt.figure(figsize=(16, 8))
-    plt.bar(x, y)
-    plt.title("Top 20 most common stopwords in reviews")
-    st.pyplot()
-
-    #Top 20 punctuations
-    dic = collections.defaultdict(int)
-    for word in corpus:
-        for char in word:
-            if char in string.punctuation:
-                dic[char] += 1
-    x, y = zip(*sorted(dic.items(), key=lambda word: word[1], reverse=True)[:20])
-    plt.figure(figsize=(16,8))
-    plt.bar(x, y)
-    plt.title("Top 20 most common punctuations in reviews")
-    st.pyplot()
-
-    #Find most popular words not in STOPWORDS
-    counter = collections.Counter(corpus)
-    most_common = counter.most_common()
-    x, y = [], []
-    for word, count in most_common[:80]:
-        if word not in STOPWORDS:
-            y.append(word)
-            x.append(count)
-    plt.figure(figsize=(16, 8))
-    plt.title("Most popular non stopwords")
-    sns.barplot(x=x, y=y)
-    st.pyplot()
-
-    #Wordcloud
-    all_words = ' '.join(create_corpus("Review", reviews_fact))
-    wordcloud = WordCloud(max_font_size=50, background_color='white', stopwords=STOPWORDS).generate(all_words)
-    plt.figure(figsize=(15,5))
-    plt.imshow(wordcloud, interpolation='bilinear')
-    plt.title("Raw reviews wordcloud")
-    st.pyplot()
-
-    #Preprocess texts
-    # Steps:
-    # 1) Apply lowercase
-    # 2) Remove punctuation
-    # 3) Remove numbers
-    # 4) Remove stopwords
-    # 5) Remove white spaces
-    # 6) Apply lemmatization
-
-    # 1) Apply lowercase
-    reviews_fact['review_cleaned'] = reviews_fact['Review'].apply(lambda text: text.lower())
-    # 2) Remove punctuations
-    def remove_punctuation(sentence):
-        return ''.join([word for word in str(sentence) if word not in string.punctuation])
-    reviews_fact['review_cleaned'] = reviews_fact['review_cleaned'].apply(lambda text: remove_punctuation(text))
-    # 3) Remove numbers
-    def remove_numbers(sentence):
-        return re.sub(r'\d+', '', sentence)
-    reviews_fact['review_cleaned'] = reviews_fact['review_cleaned'].apply(lambda text: remove_numbers(text))
-    # 4) Remove stopwords
-    def remove_stopwords(sentence):
-        return ' '.join([word for word in str(sentence).split() if word not in STOPWORDS])
-    reviews_fact['review_cleaned'] = reviews_fact['review_cleaned'].apply(lambda text: remove_stopwords(text))
-    # 5) Remove white spaces
-    def remove_spaces(sentence):
-        return re.sub(r'\s+', ' ', sentence).strip()
-    reviews_fact['review_cleaned'] = reviews_fact['review_cleaned'].apply(lambda text: remove_spaces(text))
-    # 6) Apply lemmatization
-    nlp = spacy.load("en_core_web_sm", disable=['parser', 'ner'])
-    def lemmatizer_doc(sentence):
-        doc = nlp(sentence)
-        new_sentence = [token.lemma_ for token in doc if token.is_alpha]
-        return ' '.join(new_sentence)
-    reviews_fact['review_cleaned'] = reviews_fact['review_cleaned'].apply(lambda text: lemmatizer_doc(text))
-    st.write('Original review\n', reviews_fact['Review'].iloc[0])
-    st.write('\nReview clear\n', reviews_fact['review_cleaned'].iloc[0])
-
     # Cleaned number of characters
     review_len = reviews_fact['review_cleaned'].str.len()
     plt.figure(figsize=(16,8))
@@ -262,9 +177,8 @@ elif nav_option == "EDA":
     most_common = counter.most_common()
     x, y = [], []
     for word, count in most_common[:30]:
-        if word not in STOPWORDS:
-            y.append(word)
-            x.append(count)
+        y.append(word)
+        x.append(count)
     df = pd.DataFrame({'Count': x, 'Word': y})
     plt.figure(figsize=(16, 8))
     plt.title("Most common words in cleaned reviews")
@@ -279,9 +193,8 @@ elif nav_option == "EDA":
         most_common = counter.most_common()
         x, y = [], []
         for word, count in most_common[:30]:
-            if word not in STOPWORDS:
-                y.append(word)
-                x.append(count)
+            y.append(word)
+            x.append(count)
         df = pd.DataFrame({'Count': x, 'Word': y})
         plt.figure(figsize=(16, 8))
         plt.title(f"Most common words in cleaned {airline} reviews")
@@ -290,26 +203,19 @@ elif nav_option == "EDA":
 
     # Cleaned wordcloud
     all_words = ' '.join(create_corpus("review_cleaned", reviews_fact))
-    wordcloud = WordCloud(max_font_size=50, background_color='white', stopwords=STOPWORDS).generate(all_words)
+    wordcloud = WordCloud(max_font_size=50, background_color='white').generate(all_words)
     plt.figure(figsize=(15,5))
     plt.imshow(wordcloud, interpolation='bilinear')
     plt.title("Cleaned reviews wordcloud")
     st.pyplot()
     
     # Cleaned wordcloud for respective airlines
-    def airline_wordcloud(airline):
-        all_words = ' '.join(create_corpus("review_cleaned", reviews_fact[reviews_fact["Airline"] == airline]))
-        wordcloud = WordCloud(max_font_size=50, background_color='white', stopwords=STOPWORDS).generate(all_words)
-        plt.figure(figsize=(15,5))
-        plt.imshow(wordcloud, interpolation='bilinear')
-        plt.title(f"Cleaned {airline} reviews wordcloud")
-        st.pyplot()
     airline_lst = ["jetstar-airways","airasia","scoot","indigo-airlines","cebu-pacific","lion-air","zipair"]
     for airline in airline_lst:
         airline_wordcloud(airline)
 
 
-    st.write("Bivariate Analysis")
+    st.subheader("Bivariate Analysis")
     
     # Box plot of overall rating of airlines
     airline_lst = ["jetstar-airways", "airasia", "scoot", "indigo-airlines", "cebu-pacific", "lion-air", "zipair"]
@@ -348,7 +254,41 @@ elif nav_option == "EDA":
 
 
 elif nav_option == "ML":
-    st.write("Model Results")
+    #Data, accuracy and correlation matrix
+    base_data = pd.read_csv("base.csv")
+    st.subheader("Data")
+    st.write("Input: Reviews from years 2012-2016")
+    st.dataframe(base_data)
+
+    st.subheader("Baseline Model")
+    st.write("Output: Reviews from years 2020-2024, with predicted sentiments from baseline model")
+    baseline_data = pd.read_csv("baseline_test2_output.csv")
+    st.dataframe(baseline_data)
+
+    pred_labels = baseline_data['sentiment_acc']
+    true_labels = baseline_data['is_negative_sentiment']
+    confusion_matrix_result = confusion_matrix(pred_labels, true_labels)
+    st.write("Confusion Matrix")
+    fig, ax = plt.subplots()
+    ConfusionMatrixDisplay(confusion_matrix=confusion_matrix_result).plot(ax=ax)
+    st.pyplot(fig)
+    accuracy = accuracy_score(true_labels, pred_labels)
+    st.write(f"Accuracy score of baseline model on years 2020-2024 is {'{0:.2f}'.format(accuracy)}")
+
+    st.subheader("Finetune Model")
+    st.write("Output: Reviews from years 2020-2024, with predicted sentiments from finetune model")
+    finetune_data = pd.read_csv("finetune_test2_output.csv")
+    st.dataframe(finetune_data)
+
+    pred_labels = finetune_data['sentiment_acc']
+    true_labels = finetune_data['is_negative_sentiment']
+    confusion_matrix_result = confusion_matrix(pred_labels, true_labels)
+    st.write("Confusion Matrix")
+    fig, ax = plt.subplots()
+    ConfusionMatrixDisplay(confusion_matrix=confusion_matrix_result).plot(ax=ax)
+    st.pyplot(fig)
+    accuracy = accuracy_score(true_labels, pred_labels)
+    st.write(f"Accuracy score of finetune model on years 2020-2024 is {'{0:.2f}'.format(accuracy)}")
 else:
     st.write("Error")
 
