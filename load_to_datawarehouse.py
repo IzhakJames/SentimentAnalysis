@@ -8,7 +8,12 @@ from datetime import datetime
 from sqlalchemy.types import VARCHAR
 import os
 from dotenv import load_dotenv
-
+import nltk 
+from nltk.corpus import stopwords
+import spacy
+import streamlit as st
+import string
+import re
 
 host = '34.87.87.119'
 user = 'bt4301_root'
@@ -18,23 +23,19 @@ port = '3306'
 
 def create_database_if_not_exists():
     try:
-        # Connect to the MySQL server
         connection = mysql.connector.connect(
             host=host,
-            user=user,  # Replace with your MySQL username
-            password=passwd  # Replace with your MySQL password
+            user=user,
+            password=passwd 
         )
 
-        # Create a cursor object
         cursor = connection.cursor()
         
-        # Check if the database exists
         cursor.execute("SHOW DATABASES")
         databases = [db[0] for db in cursor.fetchall()]
         if database in databases:
             print(f"Database '{database}' already exists. No need to create it.")
         else:
-            # Execute a query to create a database
             cursor.execute(f"CREATE DATABASE {database}")
             print(f"Database '{database}' created successfully")
 
@@ -42,13 +43,11 @@ def create_database_if_not_exists():
         print(f"Error: {e}")
     
     finally:
-        # Close the connection and cursor
         if connection.is_connected():
             cursor.close()
             connection.close()
             print("MySQL connection is closed")
 
-# Call the function
 create_database_if_not_exists()
 
 db_datawarehouse = mysql.connector.connect(
@@ -61,8 +60,6 @@ db_datawarehouse = mysql.connector.connect(
 cursor = db_datawarehouse.cursor()
 cursor.execute('DROP TABLE IF EXISTS reviews_fact;')
 cursor.execute('DROP TABLE IF EXISTS airline_dimension;')
-cursor.execute('DROP TABLE IF EXISTS flight_dimension;')
-
 
 db_datawarehouse.commit()
 db_datawarehouse.close()
@@ -106,6 +103,51 @@ reviews_fact = raw_data[reviews_fact]
 
 reviews_fact['Date Published'] = pd.to_datetime(reviews_fact['Date Published'])
 
+# Add Cleaned Review column
+#Stopwords
+STOPWORDS = stopwords.words('english')
+STOPWORDS.extend(["would", "get", "-", "us", "also", "one", "said", "even", "told", "take", "try", "go", "give", "use", "flight", "airline", "could"])
+STOPWORDS.extend(["cebu","indigo","scoot","airasia","jetstar","lion","zipair","pacific"])
+
+
+#Preprocess texts
+# Steps:
+# 1) Apply lowercase
+# 2) Remove punctuation
+# 3) Remove numbers
+# 4) Remove stopwords
+# 5) Remove white spaces
+# 6) Apply lemmatization
+
+# 1) Apply lowercase
+reviews_fact['review_cleaned'] = reviews_fact['Review'].apply(lambda text: text.lower())
+# 2) Remove punctuations
+def remove_punctuation(sentence):
+    return ''.join([word for word in str(sentence) if word not in string.punctuation])
+reviews_fact['review_cleaned'] = reviews_fact['review_cleaned'].apply(lambda text: remove_punctuation(text))
+# 3) Remove numbers
+def remove_numbers(sentence):
+    return re.sub(r'\d+', '', sentence)
+reviews_fact['review_cleaned'] = reviews_fact['review_cleaned'].apply(lambda text: remove_numbers(text))
+# 4) Remove stopwords
+def remove_stopwords(sentence):
+    return ' '.join([word for word in str(sentence).split() if word not in STOPWORDS])
+reviews_fact['review_cleaned'] = reviews_fact['review_cleaned'].apply(lambda text: remove_stopwords(text))
+# 5) Remove white spaces
+def remove_spaces(sentence):
+    return re.sub(r'\s+', ' ', sentence).strip()
+reviews_fact['review_cleaned'] = reviews_fact['review_cleaned'].apply(lambda text: remove_spaces(text))
+# 6) Apply lemmatization
+nlp = spacy.load("en_core_web_sm", disable=['parser', 'ner'])
+def lemmatizer_doc(sentence):
+    doc = nlp(sentence)
+    new_sentence = [token.lemma_ for token in doc if token.is_alpha]
+    return ' '.join(new_sentence)
+reviews_fact['review_cleaned'] = reviews_fact['review_cleaned'].apply(lambda text: lemmatizer_doc(text))
+st.write('Original review\n', reviews_fact['Review'].iloc[0])
+st.write('\nReview clear\n', reviews_fact['review_cleaned'].iloc[0])
+
+
 reviews_fact.to_sql(name='reviews_fact', con=db_sent, if_exists='replace')
 
 db_sent.commit()
@@ -113,7 +155,7 @@ db_sent.commit()
 airline_dimension = raw_data[['Airline','Overall Rating']].groupby(by=['Airline']).mean()
 
 sql_types = {
-    'Airline': VARCHAR(255)  # or another length that suits your data
+    'Airline': VARCHAR(255)
 }
 
 airline_dimension.to_sql(name='airline_dimension', con=db_sent, if_exists='replace',dtype=sql_types)
