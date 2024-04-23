@@ -1,0 +1,6 @@
+artifact_location: mlflow-artifacts:/269579968554903452
+creation_time: 1713880185921
+experiment_id: '269579968554903452'
+last_update_time: 1713880185921
+lifecycle_stage: active
+name: MLflow Tutorial - Baseline Model
