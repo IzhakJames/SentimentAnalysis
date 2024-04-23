@@ -2,8 +2,8 @@ import mysql.connector
 from sqlalchemy import create_engine
 import pandas as pd
 from mysql.connector import Error
-import io
-import dropbox
+# import io
+# import dropbox
 from datetime import datetime
 from sqlalchemy.types import VARCHAR
 import os
@@ -14,6 +14,9 @@ import spacy
 import streamlit as st
 import string
 import re
+from google.cloud import storage
+from io import StringIO
+
 
 host = '34.87.87.119'
 user = 'bt4301_root'
@@ -67,13 +70,22 @@ db_datawarehouse.close()
 engine = create_engine(f'mysql://{user}:{passwd}@{host}:{port}/{database}?charset=utf8mb4', echo=False,future=True)
 db_sent = engine.connect()
 
-load_dotenv()
-token=os.getenv('DROPBOX_TOKEN')
-DBX = dropbox.Dropbox(token)
-_, res = DBX.files_download("/all_reviews.csv")
+# load_dotenv()
+# token=os.getenv('DROPBOX_TOKEN')
+# DBX = dropbox.Dropbox(token)
+# _, res = DBX.files_download("/all_reviews.csv")
 
-with io.BytesIO(res.content) as stream:
-    raw_data = pd.read_csv(stream)
+# with io.BytesIO(res.content) as stream:
+#     raw_data = pd.read_csv(stream)
+
+path_to_private_key = 'ethereal-anthem-417503-1d749c7332fa.json'
+client = storage.Client.from_service_account_json(json_credentials_path=path_to_private_key)
+bucket = client.bucket('bt4301_gp')
+blob = bucket.blob('all_reviews.csv')
+downloaded_blob = blob.download_as_string()
+downloaded_blob = StringIO(downloaded_blob.decode('utf-8'))
+raw_data = pd.read_csv(downloaded_blob,index_col=0)
+
 
 reviews_fact = [
     "Review ID",
