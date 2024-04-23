@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
-
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
@@ -11,13 +5,9 @@ import time
 import traceback
 import math
 import io
-import dropbox
 import os
-from dotenv import load_dotenv
-
-
-# In[ ]:
-
+from google.cloud import storage
+from io import StringIO
 
 #Functions to webscrape
 def fetch_webpage(url):
@@ -183,17 +173,8 @@ for name in lst_names:
 # comments_data.to_csv('all_reviews.csv', encoding='utf-8', index=False)
 
 df = pd.DataFrame(comments_data_list)
-load_dotenv()
-token=os.getenv('DROPBOX_TOKEN')
-DBX = dropbox.Dropbox(token)
-
-data = df.to_csv(index=False) 
-with io.BytesIO(data.encode()) as stream:
-    stream.seek(0)
-    DBX.files_upload(stream.read(), "/all_reviews.csv", mode=dropbox.files.WriteMode.overwrite)
-
-# In[ ]:
-
-
-
-
+path_to_private_key = 'ethereal-anthem-417503-1d749c7332fa.json'
+client = storage.Client.from_service_account_json(json_credentials_path=path_to_private_key)
+bucket = client.bucket('bt4301_gp')
+blob = bucket.blob('all_reviews.csv')
+blob.upload_from_string(df.to_csv(), '')
