@@ -1,0 +1,51 @@
+[2024-04-23T17:36:51.716+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-04-23T17:36:51.738+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: daily_task_dag.load_warehouse manual__2024-04-23T17:36:18.867966+00:00 [queued]>
+[2024-04-23T17:36:51.744+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: daily_task_dag.load_warehouse manual__2024-04-23T17:36:18.867966+00:00 [queued]>
+[2024-04-23T17:36:51.744+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 2
+[2024-04-23T17:36:51.756+0000] {taskinstance.py:2327} INFO - Executing <Task(PythonOperator): load_warehouse> on 2024-04-23 17:36:18.867966+00:00
+[2024-04-23T17:36:51.764+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'daily_task_dag', 'load_warehouse', 'manual__2024-04-23T17:36:18.867966+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/DataMLOps.py', '--cfg-path', '/tmp/tmphsnesp6h']
+[2024-04-23T17:36:51.767+0000] {standard_task_runner.py:91} INFO - Job 4: Subtask load_warehouse
+[2024-04-23T17:36:51.769+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=275) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-04-23T17:36:51.769+0000] {standard_task_runner.py:63} INFO - Started process 288 to run task
+[2024-04-23T17:36:51.801+0000] {task_command.py:426} INFO - Running <TaskInstance: daily_task_dag.load_warehouse manual__2024-04-23T17:36:18.867966+00:00 [running]> on host d9bd4ae4240c
+[2024-04-23T17:36:52.071+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='daily_task_dag' AIRFLOW_CTX_TASK_ID='load_warehouse' AIRFLOW_CTX_EXECUTION_DATE='2024-04-23T17:36:18.867966+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-04-23T17:36:18.867966+00:00'
+[2024-04-23T17:36:52.072+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-04-23T17:36:52.254+0000] {logging_mixin.py:188} INFO - Database 'bt4301_gp_datawarehouse' already exists. No need to create it.
+[2024-04-23T17:36:52.261+0000] {logging_mixin.py:188} INFO - MySQL connection is closed
+[2024-04-23T17:36:52.783+0000] {logging_mixin.py:188} WARNING - /opt/***/dags/DataMLOps.py:476 SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+[2024-04-23T17:36:52.988+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-04-23T17:36:52.988+0000] {taskinstance.py:2890} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/DataMLOps.py", line 495, in load_warehouse
+    nlp = spacy.load("en_core_web_sm", disable=['parser', 'ner'])
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/spacy/__init__.py", line 51, in load
+    return util.load_model(
+           ^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/spacy/util.py", line 472, in load_model
+    raise IOError(Errors.E050.format(name=name))
+OSError: [E050] Can't find model 'en_core_web_sm'. It doesn't seem to be a Python package or a valid path to a data directory.
+[2024-04-23T17:36:52.999+0000] {taskinstance.py:1205} INFO - Marking task as UP_FOR_RETRY. dag_id=daily_task_dag, task_id=load_warehouse, execution_date=20240423T173618, start_date=20240423T173651, end_date=20240423T173652
+[2024-04-23T17:36:53.010+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 4 for task load_warehouse ([E050] Can't find model 'en_core_web_sm'. It doesn't seem to be a Python package or a valid path to a data directory.; 288)
+[2024-04-23T17:36:53.026+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-04-23T17:36:53.041+0000] {taskinstance.py:3482} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-04-23T17:36:53.046+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

@@ -1,0 +1,11 @@
+scikit-learn
+pandas
+numpy
+matplotlib
+seaborn
+streamlit
+spacy
+mysql-connector-python
+sqlalchemy
+nltk
+wordcloud

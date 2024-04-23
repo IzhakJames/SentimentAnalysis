@@ -13,7 +13,14 @@ Predictive Modeling: Developing machine learning models capable of predicting cu
 Business Insights: Extracting actionable insights for airlines to improve their services, identify areas of enhancement, and enhance overall customer satisfaction.
 
 
+---
 
+How to run docker compose file:
+1. mkdir airflow-docker
+2. docker-compose build
+3. docker-compose up airflow-init
+4. docker-compose up -d
+5. Go to localhost ports 8080, 9080 and 8501
 ---
 
 MLOps Data file:

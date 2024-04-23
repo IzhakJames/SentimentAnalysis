@@ -34,7 +34,7 @@ def predict(reviews):
 
 
 
-test_data = pd.read_csv('../data/test.csv')
+test_data = pd.read_csv('data/test.csv')
 
 
 model_path = "mlops_baseline"
@@ -49,7 +49,7 @@ accuracy = accuracy_score(true_labels, pred_labels)
 print(accuracy)
 
 # Set tracking server uri for logging
-mlflow.set_tracking_uri(uri="http://localhost:9081")
+mlflow.set_tracking_uri(uri="http://localhost:9080")
 
 # Create a new MLflow Experiment
 mlflow.set_experiment("MLflow Tutorial - Baseline Model")

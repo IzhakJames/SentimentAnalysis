@@ -2,8 +2,6 @@ import mysql.connector
 from sqlalchemy import create_engine
 import pandas as pd
 from mysql.connector import Error
-# import io
-# import dropbox
 from datetime import datetime
 from sqlalchemy.types import VARCHAR
 import os
