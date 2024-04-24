@@ -1,10 +1,12 @@
 import pandas as pd
 
 from sklearn import metrics
+from sklearn.metrics import roc_auc_score
 
 import mlflow
 import mysql.connector
 from sqlalchemy import create_engine
+
 
 def sql_push(data_df):
     host = '34.87.87.119'
@@ -44,6 +46,9 @@ true_labels = test_data['is_negative_sentiment'].to_numpy()
 scores, pred_labels = loaded_model.predict(reviews)
 accuracy = metrics.accuracy_score(true_labels, pred_labels)
 
+# Calculate the ROC AUC Score
+roc_auc = roc_auc_score(true_labels, scores)
+print(f"ROC AUC Score: {roc_auc}")
 print(accuracy)
 
 data = {
