@@ -7,5 +7,4 @@ streamlit
 spacy
 mysql-connector-python
 sqlalchemy
-nltk
 wordcloud

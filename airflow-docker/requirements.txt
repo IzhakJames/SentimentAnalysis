@@ -6,6 +6,7 @@ google-cloud-storage
 mysql-connector-python
 sqlalchemy
 spacy
-nltk
 streamlit
 numpy
+transformers
+torch

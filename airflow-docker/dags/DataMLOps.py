@@ -571,17 +571,17 @@ dag = DAG(
 start_task = DummyOperator(task_id='start_task', dag=dag)
 end_task = DummyOperator(task_id='end_task', dag=dag)
 
-webscrapping = PythonOperator(
-    task_id='webscrapping',
-    python_callable=webscrapping,
-    dag=dag
-)
+# webscrapping = PythonOperator(
+#     task_id='webscrapping',
+#     python_callable=webscrapping,
+#     dag=dag
+# )
 
-load_warehouse = PythonOperator(
-    task_id='load_warehouse',
-    python_callable=load_warehouse,
-    dag=dag
-)
+# load_warehouse = PythonOperator(
+#     task_id='load_warehouse',
+#     python_callable=load_warehouse,
+#     dag=dag
+# )
 
 predict_data = PythonOperator(
     task_id='predict_data',
@@ -589,4 +589,5 @@ predict_data = PythonOperator(
     dag=dag
 )
 
-start_task >> webscrapping >> load_warehouse>> predict_data >> end_task
+# start_task >> webscrapping >> load_warehouse>> predict_data >> end_task
+start_task >>  predict_data >> end_task

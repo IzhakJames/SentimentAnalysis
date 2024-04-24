@@ -24,7 +24,6 @@ def is_negative_sentiment_score(text):
     scores = {l: float(s) for (l, s) in zip(labels, scores_)}
     return scores.get("Negative", 0.0)
 
-
 def predict(reviews): 
     th = 0.5
 
@@ -32,10 +31,7 @@ def predict(reviews):
     pred_labels = [1 if score >= th else 0 for score in scores]
     return pred_labels
 
-
-
 test_data = pd.read_csv('data/test.csv')
-
 
 model_path = "mlops_baseline"
 model, tokenizer = load_model(model_path)
@@ -52,7 +48,7 @@ print(accuracy)
 mlflow.set_tracking_uri(uri="http://localhost:9080")
 
 # Create a new MLflow Experiment
-mlflow.set_experiment("MLflow Tutorial - Baseline Model")
+mlflow.set_experiment("MLflow Tutorial - Baseline Model V2")
 
 # Start an MLflow run
 with mlflow.start_run():
