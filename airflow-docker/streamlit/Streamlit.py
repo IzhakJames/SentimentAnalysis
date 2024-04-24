@@ -96,13 +96,12 @@ def airline_wordcloud(airline):
     st.pyplot()
 
 # Start of frontend
-st.title('Analysis on Airline Reviews')
-
 # Create a horizontal navigation bar
-nav_option = st.sidebar.radio("Navigation Bar", ["Home", "EDA", "ML"])
+nav_option = st.sidebar.radio("Navigation Bar", ["Home", "Exploratory Data Analysis", "ML"])
 
 # Display content based on navigation selection
 if nav_option == "Home":
+    st.title('Analysis on Airline Reviews')
     st.write('''Motivation:
 The rationale behind scraping data from the airline reviews webpage is to construct a comprehensive dataset encompassing customer reviews, ratings, and pertinent details. This dataset serves multiple objectives, including:
 
@@ -115,7 +114,8 @@ Comparative Analysis: Conducting comparative assessments of airlines' performanc
 Predictive Modeling: Developing machine learning models capable of predicting customer satisfaction or flight experiences based on review data.
 
 Business Insights: Extracting actionable insights for airlines to improve their services, identify areas of enhancement, and enhance overall customer satisfaction.''')
-elif nav_option == "EDA":
+elif nav_option == "Exploratory Data Analysis":
+    st.title('Exploratory Data Analysis')
     st.subheader("Data")
     st.write("Reviews Fact")
     reviews_fact = get_dataframe("reviews_fact")
@@ -254,14 +254,15 @@ elif nav_option == "EDA":
 
 
 elif nav_option == "ML":
+    st.title("ML Results")
     #Data, accuracy and correlation matrix
     base_data = get_dataframe("baseML")
-    st.subheader("Data")
-    st.write("Input: Reviews from years 2012-2016")
+    st.subheader("Training Data")
+    st.write("Reviews from years 2012-2016")
     st.dataframe(base_data)
 
     st.subheader("Baseline Model")
-    st.write("Output: Reviews from years 2020-2024, with predicted sentiments from baseline model")
+    st.write("Test Data: Reviews from years 2020-2024, with predicted sentiments from baseline model")
     baseline_data = get_dataframe("baseline_prediction")
     st.dataframe(baseline_data)
 
@@ -276,7 +277,7 @@ elif nav_option == "ML":
     st.write(f"Accuracy score of baseline model on years 2020-2024 is {'{0:.2f}'.format(accuracy)}")
 
     st.subheader("Finetune Model")
-    st.write("Output: Reviews from years 2020-2024, with predicted sentiments from finetune model")
+    st.write("Test Data: Reviews from years 2020-2024, with predicted sentiments from finetune model")
     finetune_data = get_dataframe("finetune_prediction")
     st.dataframe(finetune_data)
 
