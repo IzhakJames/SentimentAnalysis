@@ -273,8 +273,8 @@ elif nav_option == "ML":
     fig, ax = plt.subplots()
     ConfusionMatrixDisplay(confusion_matrix=confusion_matrix_result).plot(ax=ax)
     st.pyplot(fig)
-    accuracy = accuracy_score(true_labels, pred_labels)
-    st.write(f"Accuracy score of baseline model on years 2020-2024 is {'{0:.2f}'.format(accuracy)}")
+    accuracy = accuracy_score(true_labels, pred_labels) * 100
+    st.write(f"Accuracy score of baseline model on years 2020-2024 is {'{0:.2f}'.format(accuracy)}%")
 
     st.subheader("Finetune Model")
     st.write("Test Data: Reviews from years 2020-2024, with predicted sentiments from finetune model")
@@ -288,8 +288,8 @@ elif nav_option == "ML":
     fig, ax = plt.subplots()
     ConfusionMatrixDisplay(confusion_matrix=confusion_matrix_result).plot(ax=ax)
     st.pyplot(fig)
-    accuracy = accuracy_score(true_labels, pred_labels)
-    st.write(f"Accuracy score of finetune model on years 2020-2024 is {'{0:.2f}'.format(accuracy)}")
+    accuracy = accuracy_score(true_labels, pred_labels) * 100
+    st.write(f"Accuracy score of finetune model on years 2020-2024 is {'{0:.2f}'.format(accuracy)}%")
 else:
     st.write("Error")
 
