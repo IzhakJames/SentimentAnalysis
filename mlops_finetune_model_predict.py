@@ -7,7 +7,6 @@ import mlflow
 import mysql.connector
 from sqlalchemy import create_engine
 
-
 def sql_push(data_df):
     host = '34.87.87.119'
     user = 'bt4301_root'
@@ -34,7 +33,7 @@ def sql_push(data_df):
     db_sent.close()
 
 
-MODEL_PATH = 'runs:/51731bd7fb2c4792a6f41dc88c4f5457/mlops_finetune_model'
+MODEL_PATH = 'runs:/f4d04bbae6f94e6fba0dae8e8e719442/mlops_finetune_model'
 test_data = pd.read_csv('../data/test.csv')
 
 print(test_data.columns)
@@ -44,8 +43,6 @@ true_labels = test_data['is_negative_sentiment'].to_numpy()
 
 mlflow.set_tracking_uri(uri="http://localhost:9081")
 loaded_model = mlflow.pyfunc.load_model(MODEL_PATH)
-
-
 
 scores, pred_labels = loaded_model.predict(reviews)
 accuracy = metrics.accuracy_score(true_labels, pred_labels)

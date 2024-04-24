@@ -2,7 +2,7 @@ import pandas as pd
 
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from scipy.special import softmax
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, roc_auc_score
 
 import mlflow
 from mlflow.models import infer_signature
@@ -30,7 +30,7 @@ def predict(reviews):
 
     scores = [is_negative_sentiment_score(review) for review in reviews]
     pred_labels = [1 if score >= th else 0 for score in scores]
-    return pred_labels
+    return scores, pred_labels
 
 
 
@@ -45,6 +45,10 @@ true_labels = test_data['is_negative_sentiment'].to_numpy()
 
 scores, pred_labels = predict(reviews)
 accuracy = accuracy_score(true_labels, pred_labels)
+
+# Calculate the ROC AUC Score
+roc_auc = roc_auc_score(true_labels, scores)
+print(f"ROC AUC Score: {roc_auc}")
 
 print(accuracy)
 
@@ -61,7 +65,7 @@ with mlflow.start_run():
     # mlflow.log_params(params)
 
     # Log the loss metric, in this case we are using accuracy
-    mlflow.log_metric("accuracy", accuracy)
+    mlflow.log_metric("roc_auc", roc_auc)
 
     # Set a tag to identify the experiment run
     mlflow.set_tag("Training Info", "Baseline Model - Sentiment Analysis")

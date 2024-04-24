@@ -1,5 +1,7 @@
 import pandas as pd
 
+from sklearn.model_selection import train_test_split
+from sklearn import tree
 from sklearn import metrics
 from sklearn.metrics import roc_auc_score
 
@@ -34,7 +36,7 @@ def sql_push(data_df):
     db_sent.close()
 
 
-MODEL_PATH = 'runs:/40357f7673b843c0b7f282f65738a3ce/mlops_baseline_model_new'
+MODEL_PATH = 'runs:/83ccd69c86d848fc930ebea1c53baca6/mlops_baseline_model_new'
 mlflow.set_tracking_uri(uri="http://localhost:9081")
 loaded_model = mlflow.pyfunc.load_model(MODEL_PATH)
 
