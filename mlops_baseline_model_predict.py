@@ -37,7 +37,7 @@ def sql_push(data_df):
 
 
 MODEL_PATH = 'runs:/83ccd69c86d848fc930ebea1c53baca6/mlops_baseline_model_new'
-mlflow.set_tracking_uri(uri="http://localhost:9081")
+mlflow.set_tracking_uri(uri="http://localhost:9080")
 loaded_model = mlflow.pyfunc.load_model(MODEL_PATH)
 
 test_data = pd.read_csv('../data/test.csv')

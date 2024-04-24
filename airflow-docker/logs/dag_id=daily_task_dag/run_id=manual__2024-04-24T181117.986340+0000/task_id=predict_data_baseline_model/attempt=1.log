@@ -1,0 +1,33 @@
+[2024-04-24T18:11:59.936+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-04-24T18:11:59.956+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: daily_task_dag.predict_data_baseline_model manual__2024-04-24T18:11:17.986340+00:00 [queued]>
+[2024-04-24T18:11:59.963+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: daily_task_dag.predict_data_baseline_model manual__2024-04-24T18:11:17.986340+00:00 [queued]>
+[2024-04-24T18:11:59.963+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 2
+[2024-04-24T18:11:59.974+0000] {taskinstance.py:2327} INFO - Executing <Task(PythonOperator): predict_data_baseline_model> on 2024-04-24 18:11:17.986340+00:00
+[2024-04-24T18:11:59.984+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'daily_task_dag', 'predict_data_baseline_model', 'manual__2024-04-24T18:11:17.986340+00:00', '--job-id', '9', '--raw', '--subdir', 'DAGS_FOLDER/DataMLOps.py', '--cfg-path', '/tmp/tmpugbcm6dy']
+[2024-04-24T18:11:59.985+0000] {standard_task_runner.py:91} INFO - Job 9: Subtask predict_data_baseline_model
+[2024-04-24T18:11:59.987+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=924) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-04-24T18:11:59.987+0000] {standard_task_runner.py:63} INFO - Started process 956 to run task
+[2024-04-24T18:12:00.015+0000] {task_command.py:426} INFO - Running <TaskInstance: daily_task_dag.predict_data_baseline_model manual__2024-04-24T18:11:17.986340+00:00 [running]> on host 81cd95c93a08
+[2024-04-24T18:12:00.079+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='daily_task_dag' AIRFLOW_CTX_TASK_ID='predict_data_baseline_model' AIRFLOW_CTX_EXECUTION_DATE='2024-04-24T18:11:17.986340+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-04-24T18:11:17.986340+00:00'
+[2024-04-24T18:12:00.080+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-04-24T18:12:00.200+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:   0%|          | 0/10 [00:00<?, ?it/s]
+[2024-04-24T18:12:00.201+0000] {logging_mixin.py:188} WARNING - 2024/04/24 18:12:00 INFO mlflow.store.artifact.artifact_repo: The progress bar can be disabled by setting the environment variable MLFLOW_ENABLE_ARTIFACTS_PROGRESS_BAR to false
+[2024-04-24T18:12:00.201+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:  10%|#         | 1/10 [00:00<00:00, 1477.91it/s]
+[2024-04-24T18:12:00.202+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:  20%|##        | 2/10 [00:00<00:00, 1741.10it/s]
+[2024-04-24T18:12:00.202+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:  30%|###       | 3/10 [00:00<00:00, 1886.49it/s]
+[2024-04-24T18:12:00.242+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:  40%|####      | 4/10 [00:00<00:00, 96.18it/s]  
+[2024-04-24T18:12:00.246+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:  50%|#####     | 5/10 [00:00<00:00, 110.68it/s]
+[2024-04-24T18:12:00.247+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:  60%|######    | 6/10 [00:00<00:00, 130.30it/s]
+[2024-04-24T18:12:00.254+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:  70%|#######   | 7/10 [00:00<00:00, 129.72it/s]
+[2024-04-24T18:12:00.260+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:  80%|########  | 8/10 [00:00<00:00, 135.12it/s]
+[2024-04-24T18:12:00.263+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:  90%|######### | 9/10 [00:00<00:00, 143.74it/s]
+[2024-04-24T18:12:06.377+0000] {logging_mixin.py:188} WARNING - Downloading artifacts: 100%|##########| 10/10 [00:06<00:00,  1.62it/s]
+[2024-04-24T18:12:06.378+0000] {logging_mixin.py:188} WARNING - Downloading artifacts: 100%|##########| 10/10 [00:06<00:00,  1.62it/s]
+[2024-04-24T18:12:06.378+0000] {logging_mixin.py:188} WARNING - Downloading artifacts: 100%|##########| 10/10 [00:06<00:00,  1.62it/s]
+[2024-04-24T18:13:51.045+0000] {local_task_job_runner.py:310} WARNING - State of this instance has been externally set to removed. Terminating instance.
+[2024-04-24T18:13:51.046+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-04-24T18:13:51.049+0000] {process_utils.py:132} INFO - Sending 15 to group 956. PIDs of all processes in the group: [956]
+[2024-04-24T18:13:51.050+0000] {process_utils.py:87} INFO - Sending the signal 15 to group 956
+[2024-04-24T18:13:51.053+0000] {taskinstance.py:2607} ERROR - Received SIGTERM. Terminating subprocesses.
+[2024-04-24T18:13:51.053+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-04-24T18:13:51.142+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=956, status='terminated', exitcode=0, started='18:11:59') (956) terminated with exit code 0
