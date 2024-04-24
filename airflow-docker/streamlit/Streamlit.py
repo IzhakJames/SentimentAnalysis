@@ -13,7 +13,7 @@ import seaborn as sns
 from wordcloud import WordCloud 
 
 # ML
-from sklearn.metrics import confusion_matrix, accuracy_score, classification_report, ConfusionMatrixDisplay
+from sklearn.metrics import confusion_matrix, accuracy_score, classification_report, ConfusionMatrixDisplay, roc_auc_score
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
@@ -261,35 +261,44 @@ elif nav_option == "ML":
     st.write("Reviews from years 2012-2016")
     st.dataframe(base_data)
 
-    st.subheader("Baseline Model")
-    st.write("Test Data: Reviews from years 2020-2024, with predicted sentiments from baseline model")
-    baseline_data = get_dataframe("baseline_prediction")
-    st.dataframe(baseline_data)
+    with st.container():
+        col1, col2 = st.columns(2)
+        with col1:
+            st.subheader("Baseline Model")
+            st.write("Test Data: Reviews from years 2020-2024, with predicted sentiments from baseline model")
+            baseline_data = get_dataframe("baseline_prediction")
+            st.dataframe(baseline_data)
 
-    pred_labels = baseline_data['sentiment_acc']
-    true_labels = baseline_data['is_negative_sentiment']
-    confusion_matrix_result = confusion_matrix(pred_labels, true_labels)
-    st.write("Confusion Matrix")
-    fig, ax = plt.subplots()
-    ConfusionMatrixDisplay(confusion_matrix=confusion_matrix_result).plot(ax=ax)
-    st.pyplot(fig)
-    accuracy = accuracy_score(true_labels, pred_labels) * 100
-    st.write(f"Accuracy score of baseline model on years 2020-2024 is {'{0:.2f}'.format(accuracy)}%")
+            pred_labels = baseline_data['sentiment_acc']
+            true_labels = baseline_data['is_negative_sentiment']
+            scores = baseline_data['scores']
+            confusion_matrix_result = confusion_matrix(pred_labels, true_labels)
+            st.write("Confusion Matrix")
+            fig, ax = plt.subplots()
+            ConfusionMatrixDisplay(confusion_matrix=confusion_matrix_result).plot(ax=ax)
+            st.pyplot(fig)
+            accuracy_base = accuracy_score(true_labels, pred_labels) * 100
+            roc_auc_base = '{0:.6f}'.format(roc_auc_score(true_labels, scores))
+        with col2:
+            st.subheader("Finetune Model")
+            st.write("Test Data: Reviews from years 2020-2024, with predicted sentiments from finetune model")
+            finetune_data = get_dataframe("finetune_prediction")
+            st.dataframe(finetune_data)
 
-    st.subheader("Finetune Model")
-    st.write("Test Data: Reviews from years 2020-2024, with predicted sentiments from finetune model")
-    finetune_data = get_dataframe("finetune_prediction")
-    st.dataframe(finetune_data)
+            pred_labels = finetune_data['sentiment_acc']
+            true_labels = finetune_data['is_negative_sentiment']
+            scores = finetune_data['scores']
+            confusion_matrix_result = confusion_matrix(pred_labels, true_labels)
+            st.write("Confusion Matrix")
+            fig, ax = plt.subplots()
+            ConfusionMatrixDisplay(confusion_matrix=confusion_matrix_result).plot(ax=ax)
+            st.pyplot(fig)
+            accuracy_finetune = accuracy_score(true_labels, pred_labels) * 100
+            roc_auc_finetune = '{0:.6f}'.format(roc_auc_score(true_labels, scores))
 
-    pred_labels = finetune_data['sentiment_acc']
-    true_labels = finetune_data['is_negative_sentiment']
-    confusion_matrix_result = confusion_matrix(pred_labels, true_labels)
-    st.write("Confusion Matrix")
-    fig, ax = plt.subplots()
-    ConfusionMatrixDisplay(confusion_matrix=confusion_matrix_result).plot(ax=ax)
-    st.pyplot(fig)
-    accuracy = accuracy_score(true_labels, pred_labels) * 100
-    st.write(f"Accuracy score of finetune model on years 2020-2024 is {'{0:.2f}'.format(accuracy)}%")
+    st.subheader("Comparison between both models")
+    df = pd.DataFrame({"Title":["Baseline", "Finetune"], "Accuracy":[f"{'{0:.2f}'.format(accuracy_base)}%", f"{'{0:.2f}'.format(accuracy_finetune)}%"], "ROC AUC":[roc_auc_base, roc_auc_finetune]})
+    st.table(df.set_index('Title'))
 else:
     st.write("Error")
 
