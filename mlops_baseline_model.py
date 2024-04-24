@@ -43,7 +43,7 @@ model, tokenizer = load_model(model_path)
 reviews = test_data['Cleaned_Review'].to_numpy()
 true_labels = test_data['is_negative_sentiment'].to_numpy()
 
-pred_labels = predict(reviews)
+scores, pred_labels = predict(reviews)
 accuracy = accuracy_score(true_labels, pred_labels)
 
 print(accuracy)
