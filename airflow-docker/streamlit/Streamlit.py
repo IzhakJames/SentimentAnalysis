@@ -255,14 +255,14 @@ elif nav_option == "EDA":
 
 elif nav_option == "ML":
     #Data, accuracy and correlation matrix
-    base_data = pd.read_csv("base.csv")
+    base_data = get_dataframe("baseML")
     st.subheader("Data")
     st.write("Input: Reviews from years 2012-2016")
     st.dataframe(base_data)
 
     st.subheader("Baseline Model")
     st.write("Output: Reviews from years 2020-2024, with predicted sentiments from baseline model")
-    baseline_data = pd.read_csv("baseline_test2_output.csv")
+    baseline_data = get_dataframe("baseline_prediction")
     st.dataframe(baseline_data)
 
     pred_labels = baseline_data['sentiment_acc']
@@ -277,7 +277,7 @@ elif nav_option == "ML":
 
     st.subheader("Finetune Model")
     st.write("Output: Reviews from years 2020-2024, with predicted sentiments from finetune model")
-    finetune_data = pd.read_csv("finetune_test2_output.csv")
+    finetune_data = get_dataframe("finetune_prediction")
     st.dataframe(finetune_data)
 
     pred_labels = finetune_data['sentiment_acc']
