@@ -1,0 +1,18 @@
+[2024-04-25T02:30:04.657+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-04-25T02:30:04.678+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: daily_task_dag.webscrapping manual__2024-04-25T02:29:59.765338+00:00 [queued]>
+[2024-04-25T02:30:04.684+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: daily_task_dag.webscrapping manual__2024-04-25T02:29:59.765338+00:00 [queued]>
+[2024-04-25T02:30:04.684+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 2
+[2024-04-25T02:30:04.697+0000] {taskinstance.py:2327} INFO - Executing <Task(PythonOperator): webscrapping> on 2024-04-25 02:29:59.765338+00:00
+[2024-04-25T02:30:04.707+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'daily_task_dag', 'webscrapping', 'manual__2024-04-25T02:29:59.765338+00:00', '--job-id', '22', '--raw', '--subdir', 'DAGS_FOLDER/DataMLOps.py', '--cfg-path', '/tmp/tmpfqbtxcyl']
+[2024-04-25T02:30:04.711+0000] {standard_task_runner.py:91} INFO - Job 22: Subtask webscrapping
+[2024-04-25T02:30:04.713+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=2401) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-04-25T02:30:04.713+0000] {standard_task_runner.py:63} INFO - Started process 2414 to run task
+[2024-04-25T02:30:04.749+0000] {task_command.py:426} INFO - Running <TaskInstance: daily_task_dag.webscrapping manual__2024-04-25T02:29:59.765338+00:00 [running]> on host 4d4cdcf2282e
+[2024-04-25T02:30:04.817+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='daily_task_dag' AIRFLOW_CTX_TASK_ID='webscrapping' AIRFLOW_CTX_EXECUTION_DATE='2024-04-25T02:29:59.765338+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-04-25T02:29:59.765338+00:00'
+[2024-04-25T02:30:04.818+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-04-25T02:30:23.049+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-04-25T02:30:23.050+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-04-25T02:30:23.056+0000] {taskinstance.py:1205} INFO - Marking task as SUCCESS. dag_id=daily_task_dag, task_id=webscrapping, execution_date=20240425T022959, start_date=20240425T023004, end_date=20240425T023023
+[2024-04-25T02:30:23.091+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-04-25T02:30:23.110+0000] {taskinstance.py:3482} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-04-25T02:30:23.114+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

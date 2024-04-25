@@ -532,6 +532,30 @@ def load_warehouse():
     db_sent.close()
 
 def predict_data_baseline_model():
+    def get_new_data():
+        host = '34.87.87.119'
+        user = 'bt4301_root'
+        passwd = 'bt4301ftw'
+        database='bt4301_gp_datawarehouse'
+        port = '3306'
+
+        db_datawarehouse = mysql.connector.connect(
+            host=host,
+            user=user,
+            passwd=passwd,
+            database=database
+        )
+        str_sql = '''
+        SELECT review_cleaned, Recommended FROM reviews_fact;
+        '''
+        df = pd.read_sql(sql=str_sql, con=db_datawarehouse)
+
+        df['is_negative_sentiment'] = df['Recommended'].apply(lambda x : 1 if x == "no" else 0) 
+        print(df.head()) 
+        print(df.info())
+        print(df['is_negative_sentiment'].value_counts())
+        return df                       
+
     def sql_push(data_df):
         host = '34.87.87.119'
         user = 'bt4301_root'
@@ -557,14 +581,14 @@ def predict_data_baseline_model():
         db_sent.commit()
         db_sent.close()
 
-
+    
     MODEL_PATH = 'runs:/6ed1f2ddd2a34c35ad138385f7895368/mlops_baseline_model_new'
     mlflow.set_tracking_uri(uri="http://mlflow:9080")
     loaded_model = mlflow.pyfunc.load_model(MODEL_PATH)
 
-    test_data = pd.read_csv('dags/data/test.csv')
+    test_data = get_new_data()
 
-    reviews = test_data['Cleaned_Review'].to_numpy()
+    reviews = test_data['review_cleaned'].to_numpy()
     true_labels = test_data['is_negative_sentiment'].to_numpy()
 
     scores, pred_labels = loaded_model.predict(reviews)
@@ -573,7 +597,7 @@ def predict_data_baseline_model():
     # Calculate the ROC AUC Score
     roc_auc = roc_auc_score(true_labels, scores)
     print(f"ROC AUC Score: {roc_auc}")
-    print(accuracy)
+    print(f"Accuracy Score: {accuracy}")
 
     data = {
         "reviews": reviews,
@@ -587,6 +611,30 @@ def predict_data_baseline_model():
     sql_push(df)
 
 def predict_data_finetune_model():
+    def get_new_data():
+        host = '34.87.87.119'
+        user = 'bt4301_root'
+        passwd = 'bt4301ftw'
+        database='bt4301_gp_datawarehouse'
+        port = '3306'
+
+        db_datawarehouse = mysql.connector.connect(
+            host=host,
+            user=user,
+            passwd=passwd,
+            database=database
+        )
+        str_sql = '''
+        SELECT review_cleaned, Recommended FROM reviews_fact;
+        '''
+        df = pd.read_sql(sql=str_sql, con=db_datawarehouse)
+
+        df['is_negative_sentiment'] = df['Recommended'].apply(lambda x : 1 if x == "no" else 0) 
+        print(df.head()) 
+        print(df.info())
+        print(df['is_negative_sentiment'].value_counts())
+        return df
+    
     def sql_push(data_df):
         host = '34.87.87.119'
         user = 'bt4301_root'
@@ -614,11 +662,9 @@ def predict_data_finetune_model():
 
 
     MODEL_PATH = 'runs:/d32e7b686fc0468485e99e3e2f4b06c5/mlops_finetune_model'
-    test_data = pd.read_csv('dags/data/test.csv')
+    test_data = get_new_data()
 
-    print(test_data.columns)
-
-    reviews = test_data['Cleaned_Review'].to_numpy()
+    reviews = test_data['review_cleaned'].to_numpy()
     true_labels = test_data['is_negative_sentiment'].to_numpy()
 
     mlflow.set_tracking_uri(uri="http://mlflow:9080")
@@ -630,8 +676,7 @@ def predict_data_finetune_model():
     # Calculate the ROC AUC Score
     roc_auc = roc_auc_score(true_labels, scores)
     print(f"ROC AUC Score: {roc_auc}")
-
-    print(accuracy)
+    print(f"Accuracy Score: {accuracy}")
 
     data = {
         "reviews": reviews,
