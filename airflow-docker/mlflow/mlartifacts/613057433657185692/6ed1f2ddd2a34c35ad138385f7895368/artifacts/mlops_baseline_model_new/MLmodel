@@ -1,0 +1,23 @@
+artifact_path: mlops_baseline_model_new
+flavors:
+  python_function:
+    cloudpickle_version: 3.0.0
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.pyfunc.model
+    python_model: python_model.pkl
+    python_version: 3.12.2
+mlflow_version: 2.12.1
+model_size_bytes: 268870739
+model_uuid: ed2cb43eb83042cf95f1aa6a275f1345
+run_id: 6ed1f2ddd2a34c35ad138385f7895368
+saved_input_example_info:
+  artifact_path: input_example.json
+  pandas_orient: split
+  type: dataframe
+signature:
+  inputs: '[{"type": "tensor", "tensor-spec": {"dtype": "object", "shape": [-1]}}]'
+  outputs: '[{"type": "long", "required": true}]'
+  params: null
+utc_time_created: '2024-04-24 17:47:06.270158'

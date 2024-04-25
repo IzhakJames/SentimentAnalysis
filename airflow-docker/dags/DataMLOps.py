@@ -703,7 +703,7 @@ dag = DAG(
     'daily_task_dag',
     default_args=default_args,
     description='A simple DAG that runs daily at 8am',
-    schedule_interval='0 8 * * *',
+    schedule_interval='0 8 1 * *',
 )
 
 start_task = DummyOperator(task_id='start_task', dag=dag)

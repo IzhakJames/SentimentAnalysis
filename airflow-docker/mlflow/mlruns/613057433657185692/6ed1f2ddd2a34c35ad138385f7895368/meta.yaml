@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/613057433657185692/6ed1f2ddd2a34c35ad138385f7895368/artifacts
+end_time: 1713980828984
+entry_point_name: ''
+experiment_id: '613057433657185692'
+lifecycle_stage: active
+run_id: 6ed1f2ddd2a34c35ad138385f7895368
+run_name: painted-koi-423
+run_uuid: 6ed1f2ddd2a34c35ad138385f7895368
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1713980825289
+status: 3
+tags: []
+user_id: airflow
