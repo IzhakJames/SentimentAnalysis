@@ -16,15 +16,14 @@ Business Insights: Extracting actionable insights for airlines to improve their 
 ---
 
 How to run docker compose file:
-1. mkdir airflow-docker
+1. cd airflow-docker
 2. docker-compose build
 3. docker-compose up airflow-init
 4. docker-compose up -d
 5. Go to localhost ports 8080, 9080 and 8501
 ---
 
-MLOps Data file:
-
+MLOps Data file (only if the folders on GitHub is not downloading properly due to the large size of the model):
 https://www.dropbox.com/scl/fo/ud7u41jndx5gaa6xj61ok/AAb2Z3PEKvOZvIuPVpA6LKg?rlkey=mzctw55yb7rjfqook9wy591u7&st=ze38y1bg&dl=0
 
 RUNIDs:
