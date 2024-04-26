@@ -1,0 +1,75 @@
+[2024-04-25T02:05:45.390+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-04-25T02:05:45.430+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: daily_task_dag.predict_data_baseline_model manual__2024-04-25T02:05:39.104007+00:00 [queued]>
+[2024-04-25T02:05:45.439+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: daily_task_dag.predict_data_baseline_model manual__2024-04-25T02:05:39.104007+00:00 [queued]>
+[2024-04-25T02:05:45.440+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 2
+[2024-04-25T02:05:45.465+0000] {taskinstance.py:2327} INFO - Executing <Task(PythonOperator): predict_data_baseline_model> on 2024-04-25 02:05:39.104007+00:00
+[2024-04-25T02:05:45.480+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'daily_task_dag', 'predict_data_baseline_model', 'manual__2024-04-25T02:05:39.104007+00:00', '--job-id', '5', '--raw', '--subdir', 'DAGS_FOLDER/DataMLOps.py', '--cfg-path', '/tmp/tmp34cewg7l']
+[2024-04-25T02:05:45.484+0000] {standard_task_runner.py:91} INFO - Job 5: Subtask predict_data_baseline_model
+[2024-04-25T02:05:45.484+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=651) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-04-25T02:05:45.485+0000] {standard_task_runner.py:63} INFO - Started process 681 to run task
+[2024-04-25T02:05:45.538+0000] {task_command.py:426} INFO - Running <TaskInstance: daily_task_dag.predict_data_baseline_model manual__2024-04-25T02:05:39.104007+00:00 [running]> on host 4d4cdcf2282e
+[2024-04-25T02:05:45.642+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='daily_task_dag' AIRFLOW_CTX_TASK_ID='predict_data_baseline_model' AIRFLOW_CTX_EXECUTION_DATE='2024-04-25T02:05:39.104007+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-04-25T02:05:39.104007+00:00'
+[2024-04-25T02:05:45.644+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-04-25T02:05:45.807+0000] {logging_mixin.py:188} WARNING - /opt/***/dags/DataMLOps.py:551 UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+[2024-04-25T02:05:45.982+0000] {logging_mixin.py:188} INFO -    index  ...                                     review_cleaned
+0    474  ...  denpasar ngurah rai via bandung bad I ve ever ...
+1    475  ...  jakarta bali despite dire review wife book fli...
+2    473  ...  jakarta kuala lumpur delay hour first time sit...
+3    472  ...  pekanbaru penang via kuala namu painfully long...
+4    471  ...  fly jakarta padang second fly last three week ...
+
+[5 rows x 24 columns]
+[2024-04-25T02:05:45.995+0000] {logging_mixin.py:188} INFO - <class 'pandas.core.frame.DataFrame'>
+RangeIndex: 676 entries, 0 to 675
+Data columns (total 24 columns):
+ #   Column                  Non-Null Count  Dtype         
+---  ------                  --------------  -----         
+ 0   index                   676 non-null    int64         
+ 1   Review ID               676 non-null    int64         
+ 2   Date Published          676 non-null    datetime64[ns]
+ 3   Overall Rating          676 non-null    int64         
+ 4   Passenger Country       676 non-null    object        
+ 5   Trip Verified           673 non-null    object        
+ 6   Review                  676 non-null    object        
+ 7   Airline                 676 non-null    object        
+ 8   Type Of Traveller       676 non-null    object        
+ 9   Seat Type               676 non-null    object        
+ 10  Seat Comfort            615 non-null    float64       
+ 11  Cabin Staff Service     601 non-null    float64       
+ 12  Food & Beverages        340 non-null    float64       
+ 13  Ground Service          649 non-null    float64       
+ 14  Wifi & Connectivity     223 non-null    float64       
+ 15  Value For Money         676 non-null    int64         
+ 16  Recommended             676 non-null    object        
+ 17  Inflight Entertainment  224 non-null    float64       
+ 18  Origin                  671 non-null    object        
+ 19  Destination             671 non-null    object        
+ 20  Layover                 94 non-null     object        
+ 21  Aircraft                178 non-null    object        
+ 22  Date Flown              676 non-null    object        
+ 23  review_cleaned          676 non-null    object        
+dtypes: datetime64[ns](1), float64(6), int64(4), object(13)
+memory usage: 126.9+ KB
+[2024-04-25T02:05:45.996+0000] {logging_mixin.py:188} INFO - None
+[2024-04-25T02:05:46.484+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:   0%|          | 0/10 [00:00<?, ?it/s]
+[2024-04-25T02:05:46.485+0000] {logging_mixin.py:188} WARNING - 2024/04/25 02:05:46 INFO mlflow.store.artifact.artifact_repo: The progress bar can be disabled by setting the environment variable MLFLOW_ENABLE_ARTIFACTS_PROGRESS_BAR to false
+[2024-04-25T02:05:46.486+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:  10%|#         | 1/10 [00:00<00:00, 1084.08it/s]
+[2024-04-25T02:05:46.487+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:  20%|##        | 2/10 [00:00<00:00, 1390.68it/s]
+[2024-04-25T02:05:46.487+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:  30%|###       | 3/10 [00:00<00:00, 1543.92it/s]
+[2024-04-25T02:05:46.527+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:  40%|####      | 4/10 [00:00<00:00, 94.52it/s]  
+[2024-04-25T02:05:46.534+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:  50%|#####     | 5/10 [00:00<00:00, 102.22it/s]
+[2024-04-25T02:05:46.556+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:  60%|######    | 6/10 [00:00<00:00, 84.94it/s] 
+[2024-04-25T02:05:46.561+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:  70%|#######   | 7/10 [00:00<00:00, 91.79it/s]
+[2024-04-25T02:05:46.569+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:  80%|########  | 8/10 [00:00<00:00, 95.97it/s]
+[2024-04-25T02:05:46.575+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:  90%|######### | 9/10 [00:00<00:00, 99.76it/s]
+[2024-04-25T02:05:58.863+0000] {logging_mixin.py:188} WARNING - Downloading artifacts: 100%|##########| 10/10 [00:12<00:00,  1.24s/it]
+[2024-04-25T02:05:58.864+0000] {logging_mixin.py:188} WARNING - Downloading artifacts: 100%|##########| 10/10 [00:12<00:00,  1.24s/it]
+[2024-04-25T02:05:58.864+0000] {logging_mixin.py:188} WARNING - Downloading artifacts: 100%|##########| 10/10 [00:12<00:00,  1.24s/it]
+[2024-04-25T02:07:14.856+0000] {logging_mixin.py:188} INFO - ROC AUC Score: 0.9576302140404704
+[2024-04-25T02:07:14.857+0000] {logging_mixin.py:188} INFO - 0.8689320388349514
+[2024-04-25T02:07:15.609+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-04-25T02:07:15.610+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-04-25T02:07:15.617+0000] {taskinstance.py:1205} INFO - Marking task as SUCCESS. dag_id=daily_task_dag, task_id=predict_data_baseline_model, execution_date=20240425T020539, start_date=20240425T020545, end_date=20240425T020715
+[2024-04-25T02:07:15.708+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-04-25T02:07:15.723+0000] {taskinstance.py:3482} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-04-25T02:07:15.730+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

@@ -1,0 +1,55 @@
+[2024-04-25T02:23:33.052+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-04-25T02:23:33.076+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: daily_task_dag.predict_data_finetune_model manual__2024-04-25T02:22:54.749250+00:00 [queued]>
+[2024-04-25T02:23:33.081+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: daily_task_dag.predict_data_finetune_model manual__2024-04-25T02:22:54.749250+00:00 [queued]>
+[2024-04-25T02:23:33.082+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 2
+[2024-04-25T02:23:33.093+0000] {taskinstance.py:2327} INFO - Executing <Task(PythonOperator): predict_data_finetune_model> on 2024-04-25 02:22:54.749250+00:00
+[2024-04-25T02:23:33.102+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'daily_task_dag', 'predict_data_finetune_model', 'manual__2024-04-25T02:22:54.749250+00:00', '--job-id', '21', '--raw', '--subdir', 'DAGS_FOLDER/DataMLOps.py', '--cfg-path', '/tmp/tmpub512ynv']
+[2024-04-25T02:23:33.104+0000] {standard_task_runner.py:91} INFO - Job 21: Subtask predict_data_finetune_model
+[2024-04-25T02:23:33.106+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=2079) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-04-25T02:23:33.106+0000] {standard_task_runner.py:63} INFO - Started process 2092 to run task
+[2024-04-25T02:23:33.135+0000] {task_command.py:426} INFO - Running <TaskInstance: daily_task_dag.predict_data_finetune_model manual__2024-04-25T02:22:54.749250+00:00 [running]> on host 4d4cdcf2282e
+[2024-04-25T02:23:33.193+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='daily_task_dag' AIRFLOW_CTX_TASK_ID='predict_data_finetune_model' AIRFLOW_CTX_EXECUTION_DATE='2024-04-25T02:22:54.749250+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-04-25T02:22:54.749250+00:00'
+[2024-04-25T02:23:33.194+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-04-25T02:23:33.311+0000] {logging_mixin.py:188} WARNING - /opt/***/dags/DataMLOps.py:630 UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+[2024-04-25T02:23:33.382+0000] {logging_mixin.py:188} INFO -                                       review_cleaned  Recommended
+0  denpasar ngurah rai via bandung bad I ve ever ...            1
+1  jakarta bali despite dire review wife book fli...            1
+2  jakarta kuala lumpur delay hour first time sit...            1
+3  pekanbaru penang via kuala namu painfully long...            1
+4  fly jakarta padang second fly last three week ...            1
+[2024-04-25T02:23:33.387+0000] {logging_mixin.py:188} INFO - <class 'pandas.core.frame.DataFrame'>
+RangeIndex: 676 entries, 0 to 675
+Data columns (total 2 columns):
+ #   Column          Non-Null Count  Dtype 
+---  ------          --------------  ----- 
+ 0   review_cleaned  676 non-null    object
+ 1   Recommended     676 non-null    int64 
+dtypes: int64(1), object(1)
+memory usage: 10.7+ KB
+[2024-04-25T02:23:33.387+0000] {logging_mixin.py:188} INFO - None
+[2024-04-25T02:23:33.388+0000] {logging_mixin.py:188} INFO - Recommended
+1    550
+0    126
+Name: count, dtype: int64
+[2024-04-25T02:23:33.498+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:   0%|          | 0/10 [00:00<?, ?it/s]
+[2024-04-25T02:23:33.498+0000] {logging_mixin.py:188} WARNING - 2024/04/25 02:23:33 INFO mlflow.store.artifact.artifact_repo: The progress bar can be disabled by setting the environment variable MLFLOW_ENABLE_ARTIFACTS_PROGRESS_BAR to false
+[2024-04-25T02:23:33.499+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:  10%|#         | 1/10 [00:00<00:00, 1529.65it/s]
+[2024-04-25T02:23:33.499+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:  20%|##        | 2/10 [00:00<00:00, 1722.86it/s]
+[2024-04-25T02:23:33.500+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:  30%|###       | 3/10 [00:00<00:00, 1800.65it/s]
+[2024-04-25T02:23:33.536+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:  40%|####      | 4/10 [00:00<00:00, 106.16it/s] 
+[2024-04-25T02:23:33.545+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:  50%|#####     | 5/10 [00:00<00:00, 107.50it/s]
+[2024-04-25T02:23:33.549+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:  60%|######    | 6/10 [00:00<00:00, 118.94it/s]
+[2024-04-25T02:23:33.555+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:  70%|#######   | 7/10 [00:00<00:00, 123.22it/s]
+[2024-04-25T02:23:33.560+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:  80%|########  | 8/10 [00:00<00:00, 130.33it/s]
+[2024-04-25T02:23:33.566+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:  90%|######### | 9/10 [00:00<00:00, 133.13it/s]
+[2024-04-25T02:23:39.650+0000] {logging_mixin.py:188} WARNING - Downloading artifacts: 100%|##########| 10/10 [00:06<00:00,  1.63it/s]
+[2024-04-25T02:23:39.651+0000] {logging_mixin.py:188} WARNING - Downloading artifacts: 100%|##########| 10/10 [00:06<00:00,  1.63it/s]
+[2024-04-25T02:23:39.651+0000] {logging_mixin.py:188} WARNING - Downloading artifacts: 100%|##########| 10/10 [00:06<00:00,  1.63it/s]
+[2024-04-25T02:24:03.204+0000] {logging_mixin.py:188} INFO - ROC AUC Score: 0.89998556998557
+[2024-04-25T02:24:03.204+0000] {logging_mixin.py:188} INFO - 0.893491124260355
+[2024-04-25T02:24:03.766+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-04-25T02:24:03.767+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-04-25T02:24:03.774+0000] {taskinstance.py:1205} INFO - Marking task as SUCCESS. dag_id=daily_task_dag, task_id=predict_data_finetune_model, execution_date=20240425T022254, start_date=20240425T022333, end_date=20240425T022403
+[2024-04-25T02:24:03.840+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-04-25T02:24:03.853+0000] {taskinstance.py:3482} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-04-25T02:24:03.858+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

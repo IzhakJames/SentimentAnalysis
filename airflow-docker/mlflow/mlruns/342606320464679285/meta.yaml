@@ -1,0 +1,6 @@
+artifact_location: mlflow-artifacts:/342606320464679285
+creation_time: 1713980884972
+experiment_id: '342606320464679285'
+last_update_time: 1713980884972
+lifecycle_stage: active
+name: MLflow - Finetune Model

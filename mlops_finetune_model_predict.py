@@ -41,7 +41,7 @@ print(test_data.columns)
 reviews = test_data['Cleaned_Review'].to_numpy()
 true_labels = test_data['is_negative_sentiment'].to_numpy()
 
-mlflow.set_tracking_uri(uri="http://localhost:9081")
+mlflow.set_tracking_uri(uri="http://localhost:9080")
 loaded_model = mlflow.pyfunc.load_model(MODEL_PATH)
 
 scores, pred_labels = loaded_model.predict(reviews)

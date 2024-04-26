@@ -1,0 +1,23 @@
+[2024-04-24T17:35:21.824+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-04-24T17:35:21.846+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: daily_task_dag.upload_base_model manual__2024-04-24T17:35:15.535421+00:00 [queued]>
+[2024-04-24T17:35:21.852+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: daily_task_dag.upload_base_model manual__2024-04-24T17:35:15.535421+00:00 [queued]>
+[2024-04-24T17:35:21.852+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 2
+[2024-04-24T17:35:21.863+0000] {taskinstance.py:2327} INFO - Executing <Task(PythonOperator): upload_base_model> on 2024-04-24 17:35:15.535421+00:00
+[2024-04-24T17:35:21.872+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'daily_task_dag', 'upload_base_model', 'manual__2024-04-24T17:35:15.535421+00:00', '--job-id', '3', '--raw', '--subdir', 'DAGS_FOLDER/DataMLOps.py', '--cfg-path', '/tmp/tmpzgnthswe']
+[2024-04-24T17:35:21.874+0000] {standard_task_runner.py:91} INFO - Job 3: Subtask upload_base_model
+[2024-04-24T17:35:21.875+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=202) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-04-24T17:35:21.875+0000] {standard_task_runner.py:63} INFO - Started process 240 to run task
+[2024-04-24T17:35:21.905+0000] {task_command.py:426} INFO - Running <TaskInstance: daily_task_dag.upload_base_model manual__2024-04-24T17:35:15.535421+00:00 [running]> on host 7cff027a4bf3
+[2024-04-24T17:35:21.966+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='daily_task_dag' AIRFLOW_CTX_TASK_ID='upload_base_model' AIRFLOW_CTX_EXECUTION_DATE='2024-04-24T17:35:15.535421+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-04-24T17:35:15.535421+00:00'
+[2024-04-24T17:35:21.967+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-04-24T17:35:21.986+0000] {logging_mixin.py:188} INFO - loading data
+[2024-04-24T17:35:22.018+0000] {logging_mixin.py:188} INFO - loading model
+[2024-04-24T17:35:24.361+0000] {logging_mixin.py:188} INFO - preparing data
+[2024-04-24T17:35:24.363+0000] {logging_mixin.py:188} INFO - PREDICTING data
+[2024-04-24T17:36:12.377+0000] {local_task_job_runner.py:310} WARNING - State of this instance has been externally set to failed. Terminating instance.
+[2024-04-24T17:36:12.378+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-04-24T17:36:12.380+0000] {process_utils.py:132} INFO - Sending 15 to group 240. PIDs of all processes in the group: [240]
+[2024-04-24T17:36:12.381+0000] {process_utils.py:87} INFO - Sending the signal 15 to group 240
+[2024-04-24T17:36:12.382+0000] {taskinstance.py:2607} ERROR - Received SIGTERM. Terminating subprocesses.
+[2024-04-24T17:36:12.382+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-04-24T17:36:12.433+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=240, status='terminated', exitcode=0, started='17:35:21') (240) terminated with exit code 0

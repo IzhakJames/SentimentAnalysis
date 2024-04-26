@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1713980828960
+current_stage: None
+description: ''
+last_updated_timestamp: 1713980828960
+name: mlops_baseline_model_new
+run_id: 6ed1f2ddd2a34c35ad138385f7895368
+run_link: ''
+source: mlflow-artifacts:/613057433657185692/6ed1f2ddd2a34c35ad138385f7895368/artifacts/mlops_baseline_model_new
+status: READY
+status_message: null
+storage_location: mlflow-artifacts:/613057433657185692/6ed1f2ddd2a34c35ad138385f7895368/artifacts/mlops_baseline_model_new
+user_id: null
+version: 1

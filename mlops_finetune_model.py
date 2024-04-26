@@ -7,8 +7,6 @@ from sklearn.metrics import accuracy_score, roc_auc_score
 import mlflow
 from mlflow.models import infer_signature
 
-
-
 def load_model(model_path):
     tokenizer = AutoTokenizer.from_pretrained(model_path)
     model = AutoModelForSequenceClassification.from_pretrained(model_path)

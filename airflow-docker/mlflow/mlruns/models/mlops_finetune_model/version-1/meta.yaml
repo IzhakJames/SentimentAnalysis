@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1713980888605
+current_stage: None
+description: ''
+last_updated_timestamp: 1713980888605
+name: mlops_finetune_model
+run_id: d32e7b686fc0468485e99e3e2f4b06c5
+run_link: ''
+source: mlflow-artifacts:/342606320464679285/d32e7b686fc0468485e99e3e2f4b06c5/artifacts/mlops_finetune_model
+status: READY
+status_message: null
+storage_location: mlflow-artifacts:/342606320464679285/d32e7b686fc0468485e99e3e2f4b06c5/artifacts/mlops_finetune_model
+user_id: null
+version: 1

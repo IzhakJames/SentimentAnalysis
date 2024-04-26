@@ -6,7 +6,7 @@ from airflow.operators.python_operator import PythonOperator
 import pandas as pd
 
 from sklearn.model_selection import train_test_split
-from sklearn import metrics
+from sklearn.metrics import roc_auc_score, accuracy_score
 
 import mlflow
 
@@ -531,25 +531,163 @@ def load_warehouse():
     db_sent.commit()
     db_sent.close()
 
-import pickle
+def predict_data_baseline_model():
+    def get_new_data():
+        host = '34.87.87.119'
+        user = 'bt4301_root'
+        passwd = 'bt4301ftw'
+        database='bt4301_gp_datawarehouse'
+        port = '3306'
 
-def predict_data():
-    # MODEL_PATH = 'runs:/b9bd1dd88f3c4f1694a48b5b2ca6fd61/mlops_baseline_model_new'
-    test_data = pd.read_csv('dags/data/test.csv')
+        db_datawarehouse = mysql.connector.connect(
+            host=host,
+            user=user,
+            passwd=passwd,
+            database=database
+        )
+        str_sql = '''
+        SELECT review_cleaned, Recommended FROM reviews_fact;
+        '''
+        df = pd.read_sql(sql=str_sql, con=db_datawarehouse)
 
-    reviews = test_data['Cleaned_Review'].to_numpy()
+        df['is_negative_sentiment'] = df['Recommended'].apply(lambda x : 1 if x == "no" else 0) 
+        print(df.head()) 
+        print(df.info())
+        print(df['is_negative_sentiment'].value_counts())
+        return df                       
+
+    def sql_push(data_df):
+        host = '34.87.87.119'
+        user = 'bt4301_root'
+        passwd = 'bt4301ftw'
+        database='bt4301_gp_datawarehouse'
+        port = '3306'
+
+        db_datawarehouse = mysql.connector.connect(
+            host=host,
+            user=user,
+            passwd=passwd,
+            database=database
+        )
+
+        cursor = db_datawarehouse.cursor()
+        cursor.execute('DROP TABLE IF EXISTS baseline_prediction;')
+
+        engine = create_engine(f'mysql://{user}:{passwd}@{host}:{port}/{database}?charset=utf8mb4', echo=False,future=True)
+        db_sent = engine.connect()
+
+        data_df.to_sql(name='baseline_prediction', con=db_sent, if_exists='replace')
+
+        db_sent.commit()
+        db_sent.close()
+
+    
+    MODEL_PATH = 'runs:/6ed1f2ddd2a34c35ad138385f7895368/mlops_baseline_model_new'
+    mlflow.set_tracking_uri(uri="http://mlflow:9080")
+    loaded_model = mlflow.pyfunc.load_model(MODEL_PATH)
+
+    test_data = get_new_data()
+
+    reviews = test_data['review_cleaned'].to_numpy()
     true_labels = test_data['is_negative_sentiment'].to_numpy()
 
-    # mlflow.set_tracking_uri(uri="http://localhost:9080")
-    # loaded_model = mlflow.pyfunc.load_model(MODEL_PATH)
+    scores, pred_labels = loaded_model.predict(reviews)
+    accuracy = accuracy_score(true_labels, pred_labels)
 
-    pickle_in = open('dags/python_model.pkl',"rb")
-    loaded_model = pickle.load(pickle_in)
-    pickle_in.close()
+    # Calculate the ROC AUC Score
+    roc_auc = roc_auc_score(true_labels, scores)
+    print(f"ROC AUC Score: {roc_auc}")
+    print(f"Accuracy Score: {accuracy}")
 
-    pred_labels = loaded_model.predict(reviews)
-    accuracy = metrics.accuracy_score(true_labels, pred_labels)
-    print(accuracy)
+    data = {
+        "reviews": reviews,
+        "is_negative_sentiment": true_labels,
+        "scores": scores,
+        "sentiment_acc": pred_labels
+    }
+
+    df = pd.DataFrame(data)
+
+    sql_push(df)
+
+def predict_data_finetune_model():
+    def get_new_data():
+        host = '34.87.87.119'
+        user = 'bt4301_root'
+        passwd = 'bt4301ftw'
+        database='bt4301_gp_datawarehouse'
+        port = '3306'
+
+        db_datawarehouse = mysql.connector.connect(
+            host=host,
+            user=user,
+            passwd=passwd,
+            database=database
+        )
+        str_sql = '''
+        SELECT review_cleaned, Recommended FROM reviews_fact;
+        '''
+        df = pd.read_sql(sql=str_sql, con=db_datawarehouse)
+
+        df['is_negative_sentiment'] = df['Recommended'].apply(lambda x : 1 if x == "no" else 0) 
+        print(df.head()) 
+        print(df.info())
+        print(df['is_negative_sentiment'].value_counts())
+        return df
+    
+    def sql_push(data_df):
+        host = '34.87.87.119'
+        user = 'bt4301_root'
+        passwd = 'bt4301ftw'
+        database='bt4301_gp_datawarehouse'
+        port = '3306'
+
+        db_datawarehouse = mysql.connector.connect(
+            host=host,
+            user=user,
+            passwd=passwd,
+            database=database
+        )
+
+        cursor = db_datawarehouse.cursor()
+        cursor.execute('DROP TABLE IF EXISTS finetune_prediction;')
+
+        engine = create_engine(f'mysql://{user}:{passwd}@{host}:{port}/{database}?charset=utf8mb4', echo=False,future=True)
+        db_sent = engine.connect()
+
+        data_df.to_sql(name='finetune_prediction', con=db_sent, if_exists='replace')
+
+        db_sent.commit()
+        db_sent.close()
+
+
+    MODEL_PATH = 'runs:/d32e7b686fc0468485e99e3e2f4b06c5/mlops_finetune_model'
+    test_data = get_new_data()
+
+    reviews = test_data['review_cleaned'].to_numpy()
+    true_labels = test_data['is_negative_sentiment'].to_numpy()
+
+    mlflow.set_tracking_uri(uri="http://mlflow:9080")
+    loaded_model = mlflow.pyfunc.load_model(MODEL_PATH)
+
+    scores, pred_labels = loaded_model.predict(reviews)
+    accuracy = accuracy_score(true_labels, pred_labels)
+
+    # Calculate the ROC AUC Score
+    roc_auc = roc_auc_score(true_labels, scores)
+    print(f"ROC AUC Score: {roc_auc}")
+    print(f"Accuracy Score: {accuracy}")
+
+    data = {
+        "reviews": reviews,
+        "is_negative_sentiment": true_labels,
+        "scores": scores,
+        "sentiment_acc": pred_labels
+    }
+
+    df = pd.DataFrame(data)
+
+    sql_push(df)
 
 default_args = {
     'owner': 'airflow',
@@ -565,29 +703,34 @@ dag = DAG(
     'daily_task_dag',
     default_args=default_args,
     description='A simple DAG that runs daily at 8am',
-    schedule_interval='0 8 * * *',
+    schedule_interval='0 8 1 * *',
 )
 
 start_task = DummyOperator(task_id='start_task', dag=dag)
 end_task = DummyOperator(task_id='end_task', dag=dag)
 
-# webscrapping = PythonOperator(
-#     task_id='webscrapping',
-#     python_callable=webscrapping,
-#     dag=dag
-# )
-
-# load_warehouse = PythonOperator(
-#     task_id='load_warehouse',
-#     python_callable=load_warehouse,
-#     dag=dag
-# )
-
-predict_data = PythonOperator(
-    task_id='predict_data',
-    python_callable=predict_data,
+webscrapping = PythonOperator(
+    task_id='webscrapping',
+    python_callable=webscrapping,
     dag=dag
 )
 
-# start_task >> webscrapping >> load_warehouse>> predict_data >> end_task
-start_task >>  predict_data >> end_task
+load_warehouse = PythonOperator(
+    task_id='load_warehouse',
+    python_callable=load_warehouse,
+    dag=dag
+)
+
+predict_data_finetune_model = PythonOperator(
+    task_id='predict_data_finetune_model',
+    python_callable=predict_data_finetune_model,
+    dag=dag
+)
+
+predict_data_baseline_model = PythonOperator(
+    task_id='predict_data_baseline_model',
+    python_callable=predict_data_baseline_model,
+    dag=dag
+)
+
+start_task >> webscrapping >> load_warehouse>> predict_data_baseline_model >> predict_data_finetune_model >> end_task
