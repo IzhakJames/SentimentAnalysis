@@ -1,0 +1,68 @@
+[2024-04-23T17:45:59.302+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-04-23T17:45:59.431+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: daily_task_dag.load_warehouse manual__2024-04-23T17:44:26.817503+00:00 [queued]>
+[2024-04-23T17:45:59.452+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: daily_task_dag.load_warehouse manual__2024-04-23T17:44:26.817503+00:00 [queued]>
+[2024-04-23T17:45:59.452+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 2
+[2024-04-23T17:45:59.475+0000] {taskinstance.py:2327} INFO - Executing <Task(PythonOperator): load_warehouse> on 2024-04-23 17:44:26.817503+00:00
+[2024-04-23T17:45:59.501+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=281) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-04-23T17:45:59.502+0000] {standard_task_runner.py:63} INFO - Started process 317 to run task
+[2024-04-23T17:45:59.512+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'daily_task_dag', 'load_warehouse', 'manual__2024-04-23T17:44:26.817503+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/DataMLOps.py', '--cfg-path', '/tmp/tmphmqidfgq']
+[2024-04-23T17:45:59.514+0000] {standard_task_runner.py:91} INFO - Job 4: Subtask load_warehouse
+[2024-04-23T17:45:59.625+0000] {task_command.py:426} INFO - Running <TaskInstance: daily_task_dag.load_warehouse manual__2024-04-23T17:44:26.817503+00:00 [running]> on host bbb9e4261df2
+[2024-04-23T17:46:02.000+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='daily_task_dag' AIRFLOW_CTX_TASK_ID='load_warehouse' AIRFLOW_CTX_EXECUTION_DATE='2024-04-23T17:44:26.817503+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-04-23T17:44:26.817503+00:00'
+[2024-04-23T17:46:02.003+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-04-23T17:46:02.561+0000] {logging_mixin.py:188} INFO - Database 'bt4301_gp_datawarehouse' already exists. No need to create it.
+[2024-04-23T17:46:02.573+0000] {logging_mixin.py:188} INFO - MySQL connection is closed
+[2024-04-23T17:46:03.451+0000] {logging_mixin.py:188} WARNING - /opt/***/dags/DataMLOps.py:476 SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+[2024-04-23T17:46:06.425+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-04-23T17:46:06.426+0000] {taskinstance.py:2890} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/DataMLOps.py", line 496, in load_warehouse
+    reviews_fact['review_cleaned'] = reviews_fact['review_cleaned'].apply(lambda text: lemmatizer_doc(text))
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/series.py", line 4764, in apply
+    ).apply()
+      ^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/apply.py", line 1209, in apply
+    return self.apply_standard()
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/apply.py", line 1289, in apply_standard
+    mapped = obj._map_values(
+             ^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/base.py", line 921, in _map_values
+    return algorithms.map_array(arr, mapper, na_action=na_action, convert=convert)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/algorithms.py", line 1814, in map_array
+    return lib.map_infer(values, mapper, convert=convert)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "lib.pyx", line 2926, in pandas._libs.lib.map_infer
+  File "/opt/airflow/dags/DataMLOps.py", line 496, in <lambda>
+    reviews_fact['review_cleaned'] = reviews_fact['review_cleaned'].apply(lambda text: lemmatizer_doc(text))
+                                                                                       ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/DataMLOps.py", line 390, in lemmatizer_doc
+    doc = nlp(sentence)
+          ^^^
+NameError: name 'nlp' is not defined
+[2024-04-23T17:46:06.508+0000] {taskinstance.py:1205} INFO - Marking task as UP_FOR_RETRY. dag_id=daily_task_dag, task_id=load_warehouse, execution_date=20240423T174426, start_date=20240423T174559, end_date=20240423T174606
+[2024-04-23T17:46:06.531+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 4 for task load_warehouse (name 'nlp' is not defined; 317)
+[2024-04-23T17:46:06.566+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-04-23T17:46:06.590+0000] {taskinstance.py:3482} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-04-23T17:46:06.596+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

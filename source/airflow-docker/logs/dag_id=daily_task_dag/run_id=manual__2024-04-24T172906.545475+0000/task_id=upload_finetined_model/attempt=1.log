@@ -1,0 +1,151 @@
+[2024-04-24T17:30:12.741+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-04-24T17:30:12.764+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: daily_task_dag.upload_finetined_model manual__2024-04-24T17:29:06.545475+00:00 [queued]>
+[2024-04-24T17:30:12.769+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: daily_task_dag.upload_finetined_model manual__2024-04-24T17:29:06.545475+00:00 [queued]>
+[2024-04-24T17:30:12.770+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 2
+[2024-04-24T17:30:12.781+0000] {taskinstance.py:2327} INFO - Executing <Task(PythonOperator): upload_finetined_model> on 2024-04-24 17:29:06.545475+00:00
+[2024-04-24T17:30:12.795+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'daily_task_dag', 'upload_finetined_model', 'manual__2024-04-24T17:29:06.545475+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/DataMLOps.py', '--cfg-path', '/tmp/tmpqccqq0vh']
+[2024-04-24T17:30:12.797+0000] {standard_task_runner.py:91} INFO - Job 4: Subtask upload_finetined_model
+[2024-04-24T17:30:12.798+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=300) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-04-24T17:30:12.798+0000] {standard_task_runner.py:63} INFO - Started process 313 to run task
+[2024-04-24T17:30:12.827+0000] {task_command.py:426} INFO - Running <TaskInstance: daily_task_dag.upload_finetined_model manual__2024-04-24T17:29:06.545475+00:00 [running]> on host 10914eeeca12
+[2024-04-24T17:30:12.889+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='daily_task_dag' AIRFLOW_CTX_TASK_ID='upload_finetined_model' AIRFLOW_CTX_EXECUTION_DATE='2024-04-24T17:29:06.545475+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-04-24T17:29:06.545475+00:00'
+[2024-04-24T17:30:12.890+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-04-24T17:30:12.903+0000] {logging_mixin.py:188} INFO - loading data
+[2024-04-24T17:30:12.918+0000] {logging_mixin.py:188} INFO - loading model
+[2024-04-24T17:30:15.537+0000] {logging_mixin.py:188} INFO - preparing data
+[2024-04-24T17:30:15.538+0000] {logging_mixin.py:188} INFO - PREDICTING data
+[2024-04-24T17:31:04.042+0000] {logging_mixin.py:188} INFO - ROC AUC Score: 0.957703265395573
+[2024-04-24T17:31:04.042+0000] {logging_mixin.py:188} INFO - 0.8689320388349514
+[2024-04-24T17:31:04.042+0000] {logging_mixin.py:188} INFO - uploading model
+[2024-04-24T17:31:04.082+0000] {connectionpool.py:824} WARNING - Retrying (JitteredRetry(total=4, connect=4, read=5, redirect=5, status=5)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f77df5ea780>: Failed to establish a new connection: [Errno 111] Connection refused')': /api/2.0/mlflow/experiments/get-by-name?experiment_name=MLflow+-+Finetune+Model
+[2024-04-24T17:31:08.083+0000] {connectionpool.py:824} WARNING - Retrying (JitteredRetry(total=3, connect=3, read=5, redirect=5, status=5)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f77de9773b0>: Failed to establish a new connection: [Errno 111] Connection refused')': /api/2.0/mlflow/experiments/get-by-name?experiment_name=MLflow+-+Finetune+Model
+[2024-04-24T17:31:16.085+0000] {connectionpool.py:824} WARNING - Retrying (JitteredRetry(total=2, connect=2, read=5, redirect=5, status=5)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f77de977800>: Failed to establish a new connection: [Errno 111] Connection refused')': /api/2.0/mlflow/experiments/get-by-name?experiment_name=MLflow+-+Finetune+Model
+[2024-04-24T17:31:32.087+0000] {connectionpool.py:824} WARNING - Retrying (JitteredRetry(total=1, connect=1, read=5, redirect=5, status=5)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f77de9997f0>: Failed to establish a new connection: [Errno 111] Connection refused')': /api/2.0/mlflow/experiments/get-by-name?experiment_name=MLflow+-+Finetune+Model
+[2024-04-24T17:32:04.087+0000] {connectionpool.py:824} WARNING - Retrying (JitteredRetry(total=0, connect=0, read=5, redirect=5, status=5)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f77de99b950>: Failed to establish a new connection: [Errno 111] Connection refused')': /api/2.0/mlflow/experiments/get-by-name?experiment_name=MLflow+-+Finetune+Model
+[2024-04-24T17:32:04.089+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-04-24T17:32:04.089+0000] {taskinstance.py:2890} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/util/connection.py", line 95, in create_connection
+    raise err
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 715, in urlopen
+    httplib_response = self._make_request(
+                       ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 416, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connection.py", line 244, in request
+    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
+  File "/usr/local/lib/python3.12/http/client.py", line 1331, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/local/lib/python3.12/http/client.py", line 1377, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.12/http/client.py", line 1326, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.12/http/client.py", line 1085, in _send_output
+    self.send(msg)
+  File "/usr/local/lib/python3.12/http/client.py", line 1029, in send
+    self.connect()
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connection.py", line 205, in connect
+    conn = self._new_conn()
+           ^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7f77de99af90>: Failed to establish a new connection: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 827, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 827, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 827, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  [Previous line repeated 2 more times]
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 799, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/util/retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='mlflow', port=9081): Max retries exceeded with url: /api/2.0/mlflow/experiments/get-by-name?experiment_name=MLflow+-+Finetune+Model (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f77de99af90>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/mlflow/utils/rest_utils.py", line 128, in http_request
+    return _get_http_response_with_retries(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/mlflow/utils/request_utils.py", line 228, in _get_http_response_with_retries
+    return session.request(method, url, allow_redirects=allow_redirects, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='mlflow', port=9081): Max retries exceeded with url: /api/2.0/mlflow/experiments/get-by-name?experiment_name=MLflow+-+Finetune+Model (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f77de99af90>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/DataMLOps.py", line 675, in upload_finetined_model
+    mlflow.set_experiment("MLflow - Finetune Model")
+  File "/home/airflow/.local/lib/python3.12/site-packages/mlflow/tracking/fluent.py", line 143, in set_experiment
+    experiment = client.get_experiment_by_name(experiment_name)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/mlflow/tracking/client.py", line 544, in get_experiment_by_name
+    return self._tracking_client.get_experiment_by_name(name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/mlflow/tracking/_tracking_service/client.py", line 236, in get_experiment_by_name
+    return self.store.get_experiment_by_name(name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/mlflow/store/tracking/rest_store.py", line 323, in get_experiment_by_name
+    response_proto = self._call_endpoint(GetExperimentByName, req_body)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/mlflow/store/tracking/rest_store.py", line 60, in _call_endpoint
+    return call_endpoint(self.get_host_creds(), endpoint, method, json_body, response_proto)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/mlflow/utils/rest_utils.py", line 286, in call_endpoint
+    response = http_request(**call_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/mlflow/utils/rest_utils.py", line 151, in http_request
+    raise MlflowException(f"API request to {url} failed with exception {e}")
+mlflow.exceptions.MlflowException: API request to http://mlflow:9081/api/2.0/mlflow/experiments/get-by-name failed with exception HTTPConnectionPool(host='mlflow', port=9081): Max retries exceeded with url: /api/2.0/mlflow/experiments/get-by-name?experiment_name=MLflow+-+Finetune+Model (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f77de99af90>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[2024-04-24T17:32:04.107+0000] {taskinstance.py:1205} INFO - Marking task as UP_FOR_RETRY. dag_id=daily_task_dag, task_id=upload_finetined_model, execution_date=20240424T172906, start_date=20240424T173012, end_date=20240424T173204
+[2024-04-24T17:32:04.119+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 4 for task upload_finetined_model (API request to http://mlflow:9081/api/2.0/mlflow/experiments/get-by-name failed with exception HTTPConnectionPool(host='mlflow', port=9081): Max retries exceeded with url: /api/2.0/mlflow/experiments/get-by-name?experiment_name=MLflow+-+Finetune+Model (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f77de99af90>: Failed to establish a new connection: [Errno 111] Connection refused')); 313)
+[2024-04-24T17:32:04.186+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-04-24T17:32:04.200+0000] {taskinstance.py:3482} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-04-24T17:32:04.205+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

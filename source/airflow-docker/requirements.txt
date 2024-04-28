@@ -1,0 +1,12 @@
+scikit-learn
+pandas
+mlflow
+beautifulsoup4
+google-cloud-storage
+mysql-connector-python
+sqlalchemy
+spacy
+streamlit
+numpy
+transformers
+torch

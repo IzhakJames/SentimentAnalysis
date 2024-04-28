@@ -1,1 +1,31 @@
-# SentimentAnalysis
+# SentimentAnalysis from https://www.airlinequality.com/
+Motivation:
+The rationale behind scraping data from the airline reviews webpage is to construct a comprehensive dataset encompassing customer reviews, ratings, and pertinent details. This dataset serves multiple objectives, including:
+
+Sentiment Analysis: Analyzing customer sentiments towards airlines through a comprehensive examination of their reviews and ratings.
+
+Performance Evaluation: Assessing airlines' performance by analyzing customer feedback regarding aspects such as service quality, punctuality, and customer service.
+
+Comparative Analysis: Conducting comparative assessments of airlines' performances by comparing their respective datasets.
+
+Predictive Modeling: Developing machine learning models capable of predicting customer satisfaction or flight experiences based on review data.
+
+Business Insights: Extracting actionable insights for airlines to improve their services, identify areas of enhancement, and enhance overall customer satisfaction.
+
+
+---
+
+How to run docker compose file:
+1. cd airflow-docker
+2. docker-compose build
+3. docker-compose up airflow-init
+4. docker-compose up -d
+5. Go to localhost ports 8080, 9080 and 8501
+---
+
+MLOps Data file (only if the folders on GitHub is not downloading properly due to the large size of the model):
+https://www.dropbox.com/scl/fo/ud7u41jndx5gaa6xj61ok/AAb2Z3PEKvOZvIuPVpA6LKg?rlkey=mzctw55yb7rjfqook9wy591u7&st=ze38y1bg&dl=0
+
+RUNIDs:
+Baseline Model: "runs:/6ed1f2ddd2a34c35ad138385f7895368/mlops_baseline_model_new"
+FineTuned Model: "runs:/d32e7b686fc0468485e99e3e2f4b06c5/mlops_finetune_model"

@@ -1,0 +1,135 @@
+[2024-04-24T17:28:35.827+0000] {processor.py:161} INFO - Started process (PID=189) to work on /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:28:35.828+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/mlops_finetune/pytorch_model.bin for tasks to queue
+[2024-04-24T17:28:35.828+0000] {logging_mixin.py:188} INFO - [2024-04-24T17:28:35.828+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:28:35.839+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:28:35.851+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/mlops_finetune/pytorch_model.bin took 0.028 seconds
+[2024-04-24T17:29:08.641+0000] {processor.py:161} INFO - Started process (PID=207) to work on /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:29:08.642+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/mlops_finetune/pytorch_model.bin for tasks to queue
+[2024-04-24T17:29:08.643+0000] {logging_mixin.py:188} INFO - [2024-04-24T17:29:08.642+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:29:08.652+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:29:08.660+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/mlops_finetune/pytorch_model.bin took 0.022 seconds
+[2024-04-24T17:29:44.285+0000] {processor.py:161} INFO - Started process (PID=271) to work on /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:29:44.286+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/mlops_finetune/pytorch_model.bin for tasks to queue
+[2024-04-24T17:29:44.287+0000] {logging_mixin.py:188} INFO - [2024-04-24T17:29:44.286+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:29:44.298+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:29:44.311+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/mlops_finetune/pytorch_model.bin took 0.030 seconds
+[2024-04-24T17:30:19.522+0000] {processor.py:161} INFO - Started process (PID=342) to work on /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:30:19.523+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/mlops_finetune/pytorch_model.bin for tasks to queue
+[2024-04-24T17:30:19.523+0000] {logging_mixin.py:188} INFO - [2024-04-24T17:30:19.523+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:30:19.534+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:30:19.545+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/mlops_finetune/pytorch_model.bin took 0.028 seconds
+[2024-04-24T17:30:54.416+0000] {processor.py:161} INFO - Started process (PID=375) to work on /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:30:54.417+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/mlops_finetune/pytorch_model.bin for tasks to queue
+[2024-04-24T17:30:54.418+0000] {logging_mixin.py:188} INFO - [2024-04-24T17:30:54.418+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:30:54.429+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:30:54.440+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/mlops_finetune/pytorch_model.bin took 0.030 seconds
+[2024-04-24T17:31:28.274+0000] {processor.py:161} INFO - Started process (PID=425) to work on /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:31:28.274+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/mlops_finetune/pytorch_model.bin for tasks to queue
+[2024-04-24T17:31:28.275+0000] {logging_mixin.py:188} INFO - [2024-04-24T17:31:28.275+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:31:28.284+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:31:28.293+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/mlops_finetune/pytorch_model.bin took 0.023 seconds
+[2024-04-24T17:32:02.731+0000] {processor.py:161} INFO - Started process (PID=458) to work on /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:32:02.731+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/mlops_finetune/pytorch_model.bin for tasks to queue
+[2024-04-24T17:32:02.732+0000] {logging_mixin.py:188} INFO - [2024-04-24T17:32:02.732+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:32:02.741+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:32:02.750+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/mlops_finetune/pytorch_model.bin took 0.022 seconds
+[2024-04-24T17:32:35.433+0000] {processor.py:161} INFO - Started process (PID=489) to work on /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:32:35.433+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/mlops_finetune/pytorch_model.bin for tasks to queue
+[2024-04-24T17:32:35.434+0000] {logging_mixin.py:188} INFO - [2024-04-24T17:32:35.434+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:32:35.444+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:32:35.453+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/mlops_finetune/pytorch_model.bin took 0.026 seconds
+[2024-04-24T17:34:48.187+0000] {processor.py:161} INFO - Started process (PID=189) to work on /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:34:48.188+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/mlops_finetune/pytorch_model.bin for tasks to queue
+[2024-04-24T17:34:48.188+0000] {logging_mixin.py:188} INFO - [2024-04-24T17:34:48.188+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:34:48.197+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:34:48.206+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/mlops_finetune/pytorch_model.bin took 0.022 seconds
+[2024-04-24T17:35:20.081+0000] {processor.py:161} INFO - Started process (PID=220) to work on /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:35:20.081+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/mlops_finetune/pytorch_model.bin for tasks to queue
+[2024-04-24T17:35:20.082+0000] {logging_mixin.py:188} INFO - [2024-04-24T17:35:20.082+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:35:20.091+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:35:20.100+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/mlops_finetune/pytorch_model.bin took 0.022 seconds
+[2024-04-24T17:35:54.789+0000] {processor.py:161} INFO - Started process (PID=271) to work on /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:35:54.790+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/mlops_finetune/pytorch_model.bin for tasks to queue
+[2024-04-24T17:35:54.791+0000] {logging_mixin.py:188} INFO - [2024-04-24T17:35:54.791+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:35:54.805+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:35:54.819+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/mlops_finetune/pytorch_model.bin took 0.033 seconds
+[2024-04-24T17:43:14.217+0000] {processor.py:161} INFO - Started process (PID=189) to work on /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:43:14.217+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/mlops_finetune/pytorch_model.bin for tasks to queue
+[2024-04-24T17:43:14.218+0000] {logging_mixin.py:188} INFO - [2024-04-24T17:43:14.218+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:43:14.227+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:43:14.236+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/mlops_finetune/pytorch_model.bin took 0.022 seconds
+[2024-04-24T17:43:46.790+0000] {processor.py:161} INFO - Started process (PID=207) to work on /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:43:46.791+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/mlops_finetune/pytorch_model.bin for tasks to queue
+[2024-04-24T17:43:46.791+0000] {logging_mixin.py:188} INFO - [2024-04-24T17:43:46.791+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:43:46.801+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:43:46.811+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/mlops_finetune/pytorch_model.bin took 0.024 seconds
+[2024-04-24T17:44:19.294+0000] {processor.py:161} INFO - Started process (PID=240) to work on /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:44:19.295+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/mlops_finetune/pytorch_model.bin for tasks to queue
+[2024-04-24T17:44:19.295+0000] {logging_mixin.py:188} INFO - [2024-04-24T17:44:19.295+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:44:19.304+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:44:19.313+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/mlops_finetune/pytorch_model.bin took 0.022 seconds
+[2024-04-24T17:44:51.768+0000] {processor.py:161} INFO - Started process (PID=273) to work on /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:44:51.768+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/mlops_finetune/pytorch_model.bin for tasks to queue
+[2024-04-24T17:44:51.769+0000] {logging_mixin.py:188} INFO - [2024-04-24T17:44:51.769+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:44:51.778+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:44:51.786+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/mlops_finetune/pytorch_model.bin took 0.021 seconds
+[2024-04-24T17:45:24.190+0000] {processor.py:161} INFO - Started process (PID=306) to work on /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:45:24.190+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/mlops_finetune/pytorch_model.bin for tasks to queue
+[2024-04-24T17:45:24.191+0000] {logging_mixin.py:188} INFO - [2024-04-24T17:45:24.191+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:45:24.200+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:45:24.208+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/mlops_finetune/pytorch_model.bin took 0.021 seconds
+[2024-04-24T17:45:56.472+0000] {processor.py:161} INFO - Started process (PID=339) to work on /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:45:56.472+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/mlops_finetune/pytorch_model.bin for tasks to queue
+[2024-04-24T17:45:56.473+0000] {logging_mixin.py:188} INFO - [2024-04-24T17:45:56.473+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:45:56.482+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:45:56.490+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/mlops_finetune/pytorch_model.bin took 0.021 seconds
+[2024-04-24T17:46:29.325+0000] {processor.py:161} INFO - Started process (PID=409) to work on /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:46:29.326+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/mlops_finetune/pytorch_model.bin for tasks to queue
+[2024-04-24T17:46:29.326+0000] {logging_mixin.py:188} INFO - [2024-04-24T17:46:29.326+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:46:29.337+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:46:29.349+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/mlops_finetune/pytorch_model.bin took 0.029 seconds
+[2024-04-24T17:47:04.101+0000] {processor.py:161} INFO - Started process (PID=442) to work on /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:47:04.102+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/mlops_finetune/pytorch_model.bin for tasks to queue
+[2024-04-24T17:47:04.103+0000] {logging_mixin.py:188} INFO - [2024-04-24T17:47:04.103+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:47:04.116+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:47:04.129+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/mlops_finetune/pytorch_model.bin took 0.033 seconds
+[2024-04-24T17:47:39.220+0000] {processor.py:161} INFO - Started process (PID=507) to work on /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:47:39.221+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/mlops_finetune/pytorch_model.bin for tasks to queue
+[2024-04-24T17:47:39.222+0000] {logging_mixin.py:188} INFO - [2024-04-24T17:47:39.221+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:47:39.232+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:47:39.243+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/mlops_finetune/pytorch_model.bin took 0.028 seconds
+[2024-04-24T17:48:13.900+0000] {processor.py:161} INFO - Started process (PID=541) to work on /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:48:13.900+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/mlops_finetune/pytorch_model.bin for tasks to queue
+[2024-04-24T17:48:13.901+0000] {logging_mixin.py:188} INFO - [2024-04-24T17:48:13.901+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:48:13.910+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:48:13.917+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/mlops_finetune/pytorch_model.bin took 0.021 seconds
+[2024-04-24T17:48:47.605+0000] {processor.py:161} INFO - Started process (PID=574) to work on /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:48:47.605+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/mlops_finetune/pytorch_model.bin for tasks to queue
+[2024-04-24T17:48:47.606+0000] {logging_mixin.py:188} INFO - [2024-04-24T17:48:47.606+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:48:47.615+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:48:47.624+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/mlops_finetune/pytorch_model.bin took 0.022 seconds
+[2024-04-24T17:49:21.032+0000] {processor.py:161} INFO - Started process (PID=607) to work on /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:49:21.032+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/mlops_finetune/pytorch_model.bin for tasks to queue
+[2024-04-24T17:49:21.033+0000] {logging_mixin.py:188} INFO - [2024-04-24T17:49:21.033+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:49:21.041+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:49:21.049+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/mlops_finetune/pytorch_model.bin took 0.021 seconds
+[2024-04-24T17:49:54.300+0000] {processor.py:161} INFO - Started process (PID=640) to work on /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:49:54.300+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/mlops_finetune/pytorch_model.bin for tasks to queue
+[2024-04-24T17:49:54.301+0000] {logging_mixin.py:188} INFO - [2024-04-24T17:49:54.301+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:49:54.309+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:49:54.317+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/mlops_finetune/pytorch_model.bin took 0.021 seconds
+[2024-04-24T17:50:28.029+0000] {processor.py:161} INFO - Started process (PID=673) to work on /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:50:28.029+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/mlops_finetune/pytorch_model.bin for tasks to queue
+[2024-04-24T17:50:28.030+0000] {logging_mixin.py:188} INFO - [2024-04-24T17:50:28.030+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:50:28.040+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:50:28.049+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/mlops_finetune/pytorch_model.bin took 0.024 seconds
+[2024-04-24T17:51:01.717+0000] {processor.py:161} INFO - Started process (PID=712) to work on /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:51:01.718+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/mlops_finetune/pytorch_model.bin for tasks to queue
+[2024-04-24T17:51:01.719+0000] {logging_mixin.py:188} INFO - [2024-04-24T17:51:01.718+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:51:01.728+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:51:01.736+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/mlops_finetune/pytorch_model.bin took 0.022 seconds
+[2024-04-24T17:51:35.408+0000] {processor.py:161} INFO - Started process (PID=745) to work on /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:51:35.408+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/mlops_finetune/pytorch_model.bin for tasks to queue
+[2024-04-24T17:51:35.409+0000] {logging_mixin.py:188} INFO - [2024-04-24T17:51:35.409+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:51:35.418+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/mlops_finetune/pytorch_model.bin
+[2024-04-24T17:51:35.426+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/mlops_finetune/pytorch_model.bin took 0.021 seconds
